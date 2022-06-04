@@ -1,8 +1,8 @@
 @include('header')
 
 @if(session()->has('message'))
-
-    {{ session()->get('message') }}
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
     </div>
 @endif
 <!-- Page content -->

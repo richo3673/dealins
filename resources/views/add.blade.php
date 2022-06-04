@@ -21,6 +21,8 @@
             <div class="add-grid-container">
                 <div class="add-child">
                     <h3>Judul iklan</h3>
+                    <p>Masukkan judul agar pembeli tahu apa yang kamu jual</p>
+
                 </div>
                 <div class="add-child">
                     <div class="input-group">
@@ -30,6 +32,8 @@
 
                 <div class="add-child">
                     <h3>Foto produk</h3>
+                    <p>Tambahkan foto produk untuk menarik pembeli</p>
+
                 </div>
                 <div class="add-child">
                     <div class="input-group">
@@ -45,6 +49,8 @@
 
                 <div class="add-child">
                     <h3>Kategori produk</h3>
+                    <p>Pilih kategori</p>
+
                 </div>
                 <div class="add-child">
                     <div class="input-group">
@@ -84,6 +90,8 @@
 
                 <div class="add-child">
                     <h3>Deskripsi produk</h3>
+                    <p>Tulis deskripsi agar pembeli tahu lebih banyak tentang produkmu</p>
+
                 </div>
                 <div class="add-child">
                     <div class="input-group">
