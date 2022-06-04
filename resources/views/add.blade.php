@@ -24,7 +24,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="judul" placeholder="Masukkan judul iklan" id="judul">
+                        <input type="text" name="judul" placeholder="Masukkan judul iklan" id="judul" required>
                     </div>
                 </div>
 
@@ -38,7 +38,7 @@
                         </div>
                         <label for="file-ip-1">
                             <x-ri-image-add-fill class="w-12 h-12"/>
-                            <input id="file-ip-1" type="file"  onchange="showPreview(event);" accept="image/png, image/jpg, image/gif, image/jpeg" class="form-control" name="image"/>
+                            <input id="file-ip-1" type="file"  onchange="showPreview(event);" accept="image/png, image/jpg, image/gif, image/jpeg" class="form-control" name="image" required/>
                         </label>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="number" name="harga" placeholder="Masukkan harga" id="judul">
+                        <input type="number" name="harga" placeholder="Masukkan harga" id="judul" required>
                     </div>
                 </div>
 
@@ -87,7 +87,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <textarea id="desc" name="desc" rows="7" cols="83" maxlength="1275"
+                        <textarea id="desc" name="desc" rows="7" cols="83" maxlength="1275" minlength="10"
                                   placeholder="Jelaskan tentang produk anda"></textarea>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="kelurahan" placeholder="Masukkan kelurahan" id="judul">
+                        <input type="text" name="kelurahan" placeholder="Masukkan kelurahan" id="judul" required>
                     </div>
                 </div>
 
@@ -106,7 +106,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="kecamatan" placeholder="Masukkan kecamatan" id="judul">
+                        <input type="text" name="kecamatan" placeholder="Masukkan kecamatan" id="judul" required>
                     </div>
                 </div>
 
@@ -115,7 +115,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="kota" placeholder="Masukkan kota" id="judul">
+                        <input type="text" name="kota" placeholder="Masukkan kota" id="judul" required>
                     </div>
                 </div>
 
@@ -124,7 +124,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="provinsi" placeholder="Masukkan provinsi" id="judul">
+                        <input type="text" name="provinsi" placeholder="Masukkan provinsi" id="judul" required>
                     </div>
                 </div>
 
