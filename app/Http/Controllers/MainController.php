@@ -70,7 +70,6 @@ class MainController extends Controller
         $this->validate($request, [
             'image' => 'required',
             'image.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
-
         ]);
 
         $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();

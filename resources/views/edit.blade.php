@@ -35,7 +35,7 @@
                     <div class="input-group">
                         <div class="preview">
                             <img id="file-ip-1-preview">
-                            <img class="img" id="file-ip-hide" src="{{ url('public/Image/'.$dealin->file_path) }}">
+                            <img class="img" id="file-ip-hide" src="{{ url('https://dealinbucket.s3.amazonaws.com/images/'.$dealin->file_path) }}">
                         </div>
                         <label for="file-ip-1">
                             <x-ri-image-add-fill class="w-12 h-12"/>
