@@ -82,7 +82,7 @@ class MainController extends Controller
             if ($dealin->save()) {
                 $user = $dealin->user_id;
                 $kontak = User::where('id', $user)->get(['telepon', 'facebook']);
-                return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak]);
+                return redirect()->route('show');
             }
     }
 
