@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('riwayat', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('iklan_id');
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('iklan_id')->references('id')->on('dealins');
             $table->timestamps();
         });
 
