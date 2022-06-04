@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class MainController extends Controller
 {
@@ -109,12 +110,15 @@ class MainController extends Controller
 
         ]);
 
-        if ($request->file('image')) {
-            $file = $request->file('image');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('public/Image'), $filename);
-            $dealin->file_path = $filename;
-        }
+//        if ($request->file('image')) {
+//            $file = $request->file('image');
+//            $filename = date('YmdHi') . $file->getClientOriginalName();
+//            $file->move(public_path('public/Image'), $filename);
+//            $dealin->file_path = $filename;
+//        }
+        $path = $request->file('image')->store('images', 's3');
+        $dealin->file_path = basename($path);
+        $dealin->url = Storage::disk('s3')->url($path);
 
         $dealin->judul = $request->judul;
         $dealin->kategori = $request->kategori;

@@ -13,10 +13,14 @@
         transform: translateY(-200%) translateX(600%)!important;
 
     }
+    .dropdown{
+
+    }
     .user, .dropdown-content{
         display: none !important;
     }
 }
+
 .navbar {
     z-index: 1;
     border-bottom: 0.1px solid rgba(162, 162, 162, 0.29);

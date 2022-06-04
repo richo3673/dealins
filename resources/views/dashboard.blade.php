@@ -26,13 +26,13 @@
         <h5>Menampilkan lokasi : {{$kota}}</h5>
     @endif
         </div>
-
+https://dealinbucket.s3.amazonaws.com/images/GK4WKsRE5z5LPLA5GZhZ7WEluD6gbC5Ov8kKQ1eI.jpg
     <div class="grid-container">
         @foreach($dealins as $dealin)
             <div class="grid-item">
                 <a href="/dealins/{{$dealin->id}}">
                     <div class="grid-img">
-                    <img src="{{ url('public/Image/'.$dealin->file_path) }}">
+                    <img src="{{ url('https://dealinbucket.s3.amazonaws.com/images/'.$dealin->file_path) }}">
                     </div>
                     <h1>Rp {{ number_format($dealin->harga, 0, ',', '.') }}</h1>
                     <p>{{ $dealin->judul }}</p>
