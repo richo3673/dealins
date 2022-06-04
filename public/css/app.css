@@ -794,7 +794,7 @@ select {
     transform: translateY(6px);
 }
 .transform-top{
-    transform: translateY(6px);
+    transform: translateY(8px);
 }
 .cursor-default {
   cursor: default;
