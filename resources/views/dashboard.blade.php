@@ -10,7 +10,7 @@
                 <button type="submit">
                 <x-ri-search-line class="w-8 h-8 transform-top text-purple-600"/>
                 </button>
-<button type="submit">
+<button style="transform: translateY(2px)" type="submit">
     <x-gmdi-restart-alt-o class="w-9 h-9 transform-top"/>
 </button>
             </form>
