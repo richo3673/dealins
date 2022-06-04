@@ -89,13 +89,14 @@ class MainController extends Controller
         if ($dealin->save()) {
             $user = $dealin->user_id;
             $kontak = User::where('id', $user)->get(['telepon', 'facebook']);
-            return redirect()->route('mine');
+            return redirect()->route('mine')->with('success', 'Iklan berhasil dupdate !');;
+        }else{
+            return redirect()->route('mine')->with('error', 'Ooops, Perbuahan gagal disimpan !');
         }
     }
 
     public function create(Request $request)
     {
-        # code...
         return view('add');
     }
 
@@ -127,9 +128,10 @@ class MainController extends Controller
 
         if ($dealin->save()) {
 //            return view('show', ['dealin' => $dealin]);
-            return redirect()->route('mine')->with('success', 'Iklan berhasil diunggah!');
+            return redirect()->route('mine')->with('success', 'Iklan berhasil dipasang!');
+        } else {
+            return redirect()->route('mine')->with('error', 'Ooops, iklan gagal diunggah !');
         }
-        return; // 422
     }
 
     public function delete(Request $request, $id)
@@ -138,9 +140,9 @@ class MainController extends Controller
         $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
         if ($dealin) {
             $dealin->delete();
-            return redirect()->route('mine');
+            return redirect()->route('mine')->with('success', 'Iklan berhasil dihapus !');;
         } else {
-            echo "gagal";
+            return redirect()->route('mine')->with('error', 'Ooops, iklan gagal dihapus !');
         }
         return; // 404
     }
@@ -178,7 +180,10 @@ class MainController extends Controller
         $user->tanggal_lahir = $date;
         $user->facebook = $request->facebook;
         if ($user->save()) {
-            return redirect()->route('profile')->with('success', 'Profil berhasil dupdate!');;
+            return redirect()->route('profile')->with('success', 'Profil berhasil dupdate !');
+        }
+        else{
+            return redirect()->route('profile')->with('error', 'Ooops, Perbuahan gagal disimpan !');
         }
     }
 
