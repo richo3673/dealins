@@ -1,10 +1,5 @@
 @include('header')
 
-@if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-@endif
 <!-- Page content -->
 <div class="main">
 
@@ -17,6 +12,7 @@
         <div class="icon2">
             <h6 class="text-align-vert">Profil pengguna</h6>
         </div>
+        @include('flash-message')
     </div>
 
     <div class="add-item-container">
