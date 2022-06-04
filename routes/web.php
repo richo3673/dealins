@@ -31,7 +31,7 @@ Route::post('/{id}/update', [MainController::class, 'update'])->middleware(['aut
 Route::post('/add', [MainController::class, 'store'])->middleware(['auth'])->name('add');
 Route::get('/{id}', [MainController::class, 'show'])->name('show');
 Route::get('/{id}/delete', [MainController::class, 'delete'])->middleware(['auth'])->name('delete');
-Route::get('/', [MainController::class, 'search'])->name('search');
+Route::get('/dealins/', [MainController::class, 'search'])->name('search');
 Route::get('/', [MainController::class, 'home'])->middleware(['auth'])->name('dashboard');
 Route::get('/', [MainController::class, 'home'])->name('home');
 Route::get('/profile', [MainController::class, 'showProfile'])->middleware(['auth'])->name('profile');
