@@ -6,9 +6,9 @@
                     {{ __('Deal.in') }}
                 </h2>
             </a>
-            <p style="font-size: 18px" class="font-sans text-gray-800 leading-tight">Silahkan login untuk melanjutkan</p>
-
         </x-slot>
+        <p style="font-size: 18px" class="font-sans text-gray-800 leading-tight">Silahkan login untuk melanjutkan</p>
+
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
