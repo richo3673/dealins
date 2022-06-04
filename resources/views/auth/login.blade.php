@@ -4,8 +4,9 @@
             <a href="/">
                 <h2 style="font-size: 36px" class="font-semibold text-gray-800 leading-tight">
                     {{ __('Deal.in') }}
-                    <p style="font-size: 18px" class="font-normal text-gray-800 leading-tight">Silahkan login untuk melanjutkan</p>
                 </h2>
+                <p style="font-size: 18px" class="font-sans text-gray-800 leading-tight">Silahkan login untuk melanjutkan</p>
+
             </a>
         </x-slot>
 
