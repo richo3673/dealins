@@ -5,9 +5,9 @@
                 <h2 style="font-size: 36px" class="font-semibold text-gray-800 leading-tight">
                     {{ __('Deal.in') }}
                 </h2>
-                <p style="font-size: 18px" class="font-sans text-gray-800 leading-tight">Silahkan login untuk melanjutkan</p>
-
             </a>
+            <p style="font-size: 18px" class="font-sans text-gray-800 leading-tight">Silahkan login untuk melanjutkan</p>
+
         </x-slot>
 
         <!-- Session Status -->
@@ -40,14 +40,14 @@
             <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
                     <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Ingat saya') }}</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
+                        {{ __('Lupa password?') }}
                     </a>
                 @endif
 
@@ -55,9 +55,9 @@
                     {{ __('Log in') }}
                 </x-button>
             </div>
-            <div class="flex items-center justify-end mt-4"> or
+            <div class="flex items-center justify-end mt-4"> atau
             <a class="ml-2 underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
-                {{ __('Register') }}
+                {{ __('Registrasi') }}
             </a>
             </div>
         </form>
