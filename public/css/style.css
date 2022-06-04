@@ -238,6 +238,8 @@ h5{
 .filter{
     margin-left: 70px;
 }
+
+
 .filter input[type="text"]{
     border-radius: 10px;
     border-color: #732dd2;
@@ -245,6 +247,11 @@ h5{
     margin-bottom: 15px;
     font-size: 12px;
     margin-right: 5px;
+}
+
+.flash-message{
+    margin-left: 70px;
+    margin-top: 15px;
 }
 .grid-container {
     width: 50%;
