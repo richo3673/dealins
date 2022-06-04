@@ -1,6 +1,6 @@
 @if ($message = Session::get('success'))
     <div id="one" class="alert alert-success alert-block">
-        <button id="btn" type="button" class="close" data-dismiss="alert">×</button>
+        <button id="btn" type="button" class="close" onclick="myFunction2()">X</button>
         <strong>{{ $message }}</strong>
     </div>
 @endif
