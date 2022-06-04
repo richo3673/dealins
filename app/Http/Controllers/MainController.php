@@ -82,7 +82,7 @@ class MainController extends Controller
             if ($dealin->save()) {
                 $user = $dealin->user_id;
                 $kontak = User::where('id', $user)->get(['telepon', 'facebook']);
-                return redirect()->route('show');
+                return redirect()->route('mine');
             }
     }
 
