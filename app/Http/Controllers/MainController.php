@@ -52,7 +52,7 @@ class MainController extends Controller
                 $riwayat->save();
             }
             return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak])->with(['jumlah_view' => $jumlah_view]);
-        }else{
+        } else {
             return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak])->with(['jumlah_view' => $jumlah_view]);
         }
     }
@@ -67,29 +67,30 @@ class MainController extends Controller
     public function update(Request $request, $id)
     {
         # Validations before updating
+        $this->validate($request, [
+            'image' => 'required',
+            'image.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
+
+        ]);
+
         $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
+        $path = $request->file('image')->store('images', 's3');
+        $dealin->file_path = basename($path);
+        $dealin->judul = $request->judul;
+        $dealin->kategori = $request->kategori;
+        $dealin->kondisi = $request->kondisi;
+        $dealin->harga = $request->harga;
 
-            if ($request->file('image')) {
-                $file = $request->file('image');
-                $filename = date('YmdHi') . $file->getClientOriginalName();
-                $file->move(public_path('public/Image'), $filename);
-                $dealin->file_path = $filename;
-            }
-            $dealin->judul = $request->judul;
-            $dealin->kategori = $request->kategori;
-            $dealin->kondisi = $request->kondisi;
-            $dealin->harga = $request->harga;
-
-            $dealin->desc = $request->desc;
-            $dealin->kelurahan = $request->kelurahan;
-            $dealin->kecamatan = $request->kecamatan;
-            $dealin->kota = $request->kota;
-            $dealin->provinsi = $request->provinsi;
-            if ($dealin->save()) {
-                $user = $dealin->user_id;
-                $kontak = User::where('id', $user)->get(['telepon', 'facebook']);
-                return redirect()->route('mine');
-            }
+        $dealin->desc = $request->desc;
+        $dealin->kelurahan = $request->kelurahan;
+        $dealin->kecamatan = $request->kecamatan;
+        $dealin->kota = $request->kota;
+        $dealin->provinsi = $request->provinsi;
+        if ($dealin->save()) {
+            $user = $dealin->user_id;
+            $kontak = User::where('id', $user)->get(['telepon', 'facebook']);
+            return redirect()->route('mine');
+        }
     }
 
     public function create(Request $request)
@@ -110,12 +111,6 @@ class MainController extends Controller
 
         ]);
 
-//        if ($request->file('image')) {
-//            $file = $request->file('image');
-//            $filename = date('YmdHi') . $file->getClientOriginalName();
-//            $file->move(public_path('public/Image'), $filename);
-//            $dealin->file_path = $filename;
-//        }
         $path = $request->file('image')->store('images', 's3');
         $dealin->file_path = basename($path);
         $dealin->judul = $request->judul;
@@ -154,14 +149,14 @@ class MainController extends Controller
     {
         $cari = $request->cari;
         $kota = $request->kota;
-        if(isset($cari) && !isset($kota)) {
+        if (isset($cari) && !isset($kota)) {
             $dealin = Dealin::where('judul', 'ilike', '%' . $cari . '%')->get();
-        }
-        elseif(isset($kota) && !isset($cari)){
+        } elseif (isset($kota) && !isset($cari)) {
             $dealin = Dealin::where('kota', 'ilike', '%' . $kota . '%')->orWhere('kecamatan', 'ilike', '%' . $kota . '%')->orWhere('kelurahan', 'ilike', '%' . $kota . '%')->get();
-        }
-        else{
-            $dealin = Dealin::where('judul', 'ilike', '%' . $cari . '%')->where(function($query) use ($kota) {$query->where('kota', 'ilike', '%' . $kota . '%')->orWhere('kecamatan', 'ilike', '%' . $kota . '%')->orWhere('kelurahan', 'ilike', '%' . $kota . '%');})->get();;
+        } else {
+            $dealin = Dealin::where('judul', 'ilike', '%' . $cari . '%')->where(function ($query) use ($kota) {
+                $query->where('kota', 'ilike', '%' . $kota . '%')->orWhere('kecamatan', 'ilike', '%' . $kota . '%')->orWhere('kelurahan', 'ilike', '%' . $kota . '%');
+            })->get();;
         }
         if ($dealin) {
             return view('dashboard', compact('cari', 'kota'))->with(['dealins' => $dealin]);
@@ -187,14 +182,15 @@ class MainController extends Controller
         }
     }
 
-    public function riwayat(){
+    public function riwayat()
+    {
         $riwayat = Riwayat::where('user_id', Auth::user()->id)->get();
 //        $id = array();
 //        foreach ($riwayat as $riwayats) {
 //            $id[] = $riwayats->iklan_id;
 //        }
 //        $dealin = Dealin::whereIn('id', $id)->orderBy($riwayat->created_at, 'DESC')->get();
-        $dealin = Dealin::join('riwayats', 'riwayats.iklan_id','=','dealins.id')->where('riwayats.user_id',Auth::user()->id )->orderBy('riwayats.updated_at', 'desc')->get();
+        $dealin = Dealin::join('riwayats', 'riwayats.iklan_id', '=', 'dealins.id')->where('riwayats.user_id', Auth::user()->id)->orderBy('riwayats.updated_at', 'desc')->get();
         return view('history')->with(['dealins' => $dealin]);
     }
 }
