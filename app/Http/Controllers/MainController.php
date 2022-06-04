@@ -34,21 +34,25 @@ class MainController extends Controller
         # code...
         $dealin = Dealin::find($id);
         $user = $dealin->user_id;
-        $viewer = Auth::user()->id;
-        $kontak = User::where('id', $user)->get(['telepon', 'facebook','name']);
+        if (isset(Auth::user()->id)) {
+            $viewer = Auth::user()->id;
+            $kontak = User::where('id', $user)->get(['telepon', 'facebook', 'name']);
 
-        $cek = Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->first();
-        $jumlah_view = Riwayat::where('iklan_id', $id)->get();
-        if($cek){
-            Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->update(['updated_at' => Carbon::now()]);
+            $cek = Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->first();
+            $jumlah_view = Riwayat::where('iklan_id', $id)->get();
+            if ($cek) {
+                Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->update(['updated_at' => Carbon::now()]);
+            } else {
+                $riwayat = new Riwayat();
+                $riwayat->iklan_id = $id;
+                $riwayat->user_id = $viewer;
+                $riwayat->save();
+            }
+
+            return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak])->with(['jumlah_view' => $jumlah_view]);
+        }else{
+            return view('show')->with(['dealin' => $dealin]);
         }
-        else{
-            $riwayat = new Riwayat();
-            $riwayat->iklan_id = $id;
-            $riwayat->user_id = $viewer;
-            $riwayat->save();
-        }
-        return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak])->with(['jumlah_view' => $jumlah_view]);
     }
 
     public function edit(Request $request, $id)
