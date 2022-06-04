@@ -26,7 +26,6 @@
         <h5>Menampilkan lokasi : {{$kota}}</h5>
     @endif
         </div>
-https://dealinbucket.s3.amazonaws.com/images/GK4WKsRE5z5LPLA5GZhZ7WEluD6gbC5Ov8kKQ1eI.jpg
     <div class="grid-container">
         @foreach($dealins as $dealin)
             <div class="grid-item">

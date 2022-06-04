@@ -20,7 +20,7 @@
         @foreach($dealins as $dealin)
             <div class="grid-item">
                 <a href="/dealins/{{$dealin->id}}">
-                    <img src="{{ url('public/Image/'.$dealin->file_path) }}">
+                    <img src="{{ url('https://dealinbucket.s3.amazonaws.com/images/'.$dealin->file_path) }}">
 
                     <h1>Rp {{ number_format($dealin->harga, 0, ',', '.') }}</h1>
                     <p>{{ $dealin->judul }}</p>

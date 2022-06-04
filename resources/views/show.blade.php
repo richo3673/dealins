@@ -15,7 +15,7 @@
     <div class="grid-show-container">
         <div class="grid-show-item">
             <div class="image-show">
-            <img class="img" src="{{ url('public/Image/'.$dealin->file_path) }}" width="1200" height="430">
+            <img class="img" src="{{ url('https://dealinbucket.s3.amazonaws.com/images/'.$dealin->file_path) }}" width="1200" height="430">
         </div>
             <div class="grid-item-container2">
                 <div class="item-container2">

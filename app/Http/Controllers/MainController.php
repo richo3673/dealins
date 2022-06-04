@@ -118,8 +118,6 @@ class MainController extends Controller
 //        }
         $path = $request->file('image')->store('images', 's3');
         $dealin->file_path = basename($path);
-        $dealin->url = Storage::disk('s3')->url($path);
-
         $dealin->judul = $request->judul;
         $dealin->kategori = $request->kategori;
         $dealin->kondisi = $request->kondisi;
