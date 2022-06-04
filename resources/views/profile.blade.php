@@ -83,6 +83,19 @@
         </form>
     </div>
 </div>
+
+<script>
+    const targetDiv = document.getElementById("one");
+    const btn = document.getElementById("btn");
+    btn.onclick = function () {
+        if (targetDiv.style.display !== "none") {
+            targetDiv.style.display = "none";
+        } else {
+            targetDiv.style.display = "block";
+        }
+    };
+</script>
+
 </body>
 </html>
 

@@ -1,12 +1,6 @@
-<link rel="stylesheet" href="/css/app.css">
-<link rel="stylesheet" href="/css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript" src="/js/app.js"></script>
-<script type="text/javascript" src="/js/jquery.js"></script>
-
 @if ($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
+    <div id="one" class="alert alert-success alert-block">
+        <button id="btn" type="button" class="close" data-dismiss="alert">×</button>
         <strong>{{ $message }}</strong>
     </div>
 @endif
