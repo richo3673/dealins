@@ -34,7 +34,7 @@ class MainController extends Controller
         # code...
         $dealin = Dealin::find($id);
         $user = $dealin->user_id;
-        if (isset(Auth::user()->id)) {
+        if (Auth::check()) {
             $viewer = Auth::user()->id;
             $kontak = User::where('id', $user)->get(['telepon', 'facebook', 'name']);
 
@@ -48,7 +48,6 @@ class MainController extends Controller
                 $riwayat->user_id = $viewer;
                 $riwayat->save();
             }
-
             return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak])->with(['jumlah_view' => $jumlah_view]);
         }else{
             return view('show')->with(['dealin' => $dealin]);
