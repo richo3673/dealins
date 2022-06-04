@@ -127,7 +127,7 @@ class MainController extends Controller
 
         if ($dealin->save()) {
 //            return view('show', ['dealin' => $dealin]);
-            return redirect()->route('mine');
+            return redirect()->route('mine')->with('success', 'Iklan berhasil diunggah!');
         }
         return; // 422
     }
@@ -178,7 +178,7 @@ class MainController extends Controller
         $user->tanggal_lahir = $date;
         $user->facebook = $request->facebook;
         if ($user->save()) {
-            return redirect()->route('profile');
+            return redirect()->route('profile')->with('success', 'Iklan berhasil diunggah!');;
         }
     }
 
