@@ -11,7 +11,7 @@
                 <x-ri-search-line class="w-8 h-8 transform-top text-purple-600"/>
                 </button>
 <button type="submit">
-    <x-gmdi-restart-alt-o class="w-9 h-9 transform-top text-purple-600"/>
+    <x-gmdi-restart-alt-o class="w-9 h-9 transform-top"/>
 </button>
             </form>
         <a>
