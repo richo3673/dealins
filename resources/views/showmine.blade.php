@@ -15,6 +15,7 @@
     <div class="filter">
     <h5>Kami menemukan : {{count($dealins)}} iklan milikmu</h5>
     </div>
+    @include('flash-message')
     <div class="grid-container">
 
         @foreach($dealins as $dealin)
