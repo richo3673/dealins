@@ -35,12 +35,13 @@ class MainController extends Controller
         $dealin = Dealin::find($id);
         $user = $dealin->user_id;
         $kontak = User::where('id', $user)->get(['telepon', 'facebook', 'name']);
+        $jumlah_view = Riwayat::where('iklan_id', $id)->get();
         if (Auth::check()) {
             $viewer = Auth::user()->id;
 
 
             $cek = Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->first();
-            $jumlah_view = Riwayat::where('iklan_id', $id)->get();
+
             if ($cek) {
                 Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->update(['updated_at' => Carbon::now()]);
             } else {
@@ -51,7 +52,7 @@ class MainController extends Controller
             }
             return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak])->with(['jumlah_view' => $jumlah_view]);
         }else{
-            return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak]);
+            return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak])->with(['jumlah_view' => $jumlah_view]);
         }
     }
 
