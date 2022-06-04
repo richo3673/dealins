@@ -178,7 +178,7 @@ class MainController extends Controller
         $user->tanggal_lahir = $date;
         $user->facebook = $request->facebook;
         if ($user->save()) {
-            return redirect()->route('profile')->with('success', 'Iklan berhasil diunggah!');;
+            return redirect()->route('profile')->with('message', 'The success message!');;
         }
     }
 

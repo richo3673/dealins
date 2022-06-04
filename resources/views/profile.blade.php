@@ -1,5 +1,10 @@
 @include('header')
 
+@if(session()->has('message'))
+
+    {{ session()->get('message') }}
+    </div>
+@endif
 <!-- Page content -->
 <div class="main">
 
