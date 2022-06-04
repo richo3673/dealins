@@ -148,13 +148,13 @@ class MainController extends Controller
         $cari = $request->cari;
         $kota = $request->kota;
         if(isset($cari) && !isset($kota)) {
-            $dealin = Dealin::where('judul', 'like', '%' . $cari . '%')->get();
+            $dealin = Dealin::where('judul', 'ilike', '%' . $cari . '%')->get();
         }
         elseif(isset($kota) && !isset($cari)){
-            $dealin = Dealin::where('kota', 'like', '%' . $kota . '%')->orWhere('kecamatan', 'like', '%' . $kota . '%')->orWhere('kelurahan', 'like', '%' . $kota . '%')->get();
+            $dealin = Dealin::where('kota', 'ilike', '%' . $kota . '%')->orWhere('kecamatan', 'ilike', '%' . $kota . '%')->orWhere('kelurahan', 'ilike', '%' . $kota . '%')->get();
         }
         else{
-            $dealin = Dealin::where('judul', 'like', '%' . $cari . '%')->where(function($query) use ($kota) {$query->where('kota', 'like', '%' . $kota . '%')->orWhere('kecamatan', 'like', '%' . $kota . '%')->orWhere('kelurahan', 'like', '%' . $kota . '%');})->get();;
+            $dealin = Dealin::where('judul', 'ilike', '%' . $cari . '%')->where(function($query) use ($kota) {$query->where('kota', 'ilike', '%' . $kota . '%')->orWhere('kecamatan', 'ilike', '%' . $kota . '%')->orWhere('kelurahan', 'ilike', '%' . $kota . '%');})->get();;
         }
         if ($dealin) {
             return view('dashboard', compact('cari', 'kota'))->with(['dealins' => $dealin]);
