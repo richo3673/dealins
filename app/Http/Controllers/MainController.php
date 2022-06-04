@@ -34,9 +34,10 @@ class MainController extends Controller
         # code...
         $dealin = Dealin::find($id);
         $user = $dealin->user_id;
+        $kontak = User::where('id', $user)->get(['telepon', 'facebook', 'name']);
         if (Auth::check()) {
             $viewer = Auth::user()->id;
-            $kontak = User::where('id', $user)->get(['telepon', 'facebook', 'name']);
+
 
             $cek = Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->first();
             $jumlah_view = Riwayat::where('iklan_id', $id)->get();
@@ -50,7 +51,7 @@ class MainController extends Controller
             }
             return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak])->with(['jumlah_view' => $jumlah_view]);
         }else{
-            return view('show')->with(['dealin' => $dealin]);
+            return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak]);
         }
     }
 
