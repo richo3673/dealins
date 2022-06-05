@@ -28,7 +28,11 @@ class MainController extends Controller
                 $recommendation = Dealin::where('judul', 'ilike', '%' . $cari . '%')->take(4)->get();
                 if (isset($recommendation)) {
                     return view('dashboard')->with(['dealins' => $dealin])->with(['recommendation' => $recommendation]);
+                }else{
+                    return view('dashboard')->with(['dealins' => $dealin]);
                 }
+            }else{
+                return view('dashboard')->with(['dealins' => $dealin]);
             }
         }else {
             return view('dashboard')->with(['dealins' => $dealin]);
