@@ -23,7 +23,7 @@
 
     </div>
 @endif
-<h4> iklan terbaru</h4>
+<h4> Iklan terbaru</h4>
 
 
     <div class="filter">
