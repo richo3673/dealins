@@ -43,7 +43,4 @@ Route::post('/pengaturan/hapus_akun', [MainController::class, 'deleteUser'])->mi
 
 
 
-
-
-
 require __DIR__ . '/auth.php';
