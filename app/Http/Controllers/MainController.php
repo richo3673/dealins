@@ -226,7 +226,7 @@ class MainController extends Controller
     }
 
     public function deleteUser(Request $request){
-        $user = \User::find(Auth::user()->id);
+        $user = User::find(Auth::user()->id);
 
         Auth::logout();
 
