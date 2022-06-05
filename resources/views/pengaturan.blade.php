@@ -10,7 +10,7 @@
             </div>
         </a>
         <div class="icon2">
-            <h6 class="text-align-vert">Profil pengguna</h6>
+            <h6 class="text-align-vert">Pengaturan pengguna</h6>
         </div>
         @include('flash-message')
     </div>
