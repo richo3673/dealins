@@ -16,8 +16,7 @@
     </div>
 
     <div class="add-item-container">
-        <form method="post" action="{{ route('update_profile') }}"
-              enctype="multipart/form-data">
+
             @csrf
             <div class="add-grid-container">
                 <div class="add-child">
@@ -25,12 +24,28 @@
                     <p>Bersihkan seluruh riwayat iklan yang pernah kamu kunjungi sebelumnya</p>
                 </div>
                 <div class="add-child">
-                    <div class="input-group">
-                        <input type="submit" name="hapus_riwayat" value="Hapus">
+                    <div class="input-group2">
+                        <form method="post" action="{{ route('hapus_riwayat') }}"
+                              enctype="multipart/form-data">
+                            <x-button class="h-10 text-base text-red-600">hapus</x-button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="add-child">
+                    <h3 style="color: red">Hapus akun</h3>
+                    <p>!! Ini akan menghapus seluruh data beserta iklan pada akun anda. Setelah melakukan penghapusan, akun anda tidak dapat dipulihkan</p>
+                </div>
+                <div class="add-child">
+                    <div class="input-group2">
+                        <form method="post" action="{{ route('hapus_riwayat') }}"
+                              enctype="multipart/form-data">
+                            <x-button class=" h-10 text-base text-red-600">hapus</x-button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </form>
+
     </div>
 </div>
 

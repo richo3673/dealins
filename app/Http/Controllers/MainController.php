@@ -39,10 +39,9 @@ class MainController extends Controller
         $jumlah_view = Riwayat::where('iklan_id', $id)->get();
         if (Auth::check()) {
             $viewer = Auth::user()->id;
-
-
             $cek = Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->first();
-
+            $val = $cek->dilihat;
+            $cek->dilihat = $val+1;
             if ($cek) {
                 Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->update(['updated_at' => Carbon::now()]);
             } else {
@@ -201,5 +200,15 @@ class MainController extends Controller
     public function pengaturan(Request $request)
     {
         return view('pengaturan');
+    }
+
+    public function hapusRiwayat(){
+        $riwayat = Riwayat::where('user_id', Auth::user()->id)->get();
+        if ($riwayat) {
+            $riwayat->delete();
+            return redirect()->route('mine')->with('success', 'Riwayat berhasil dihapus !');;
+        } else {
+            return redirect()->route('mine')->with('error', 'Ooops, riwayat tidak ditemukan!');
+        }
     }
 }

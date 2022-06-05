@@ -512,7 +512,9 @@ h6{
 .add-child .input-group{
     position: relative;
 }
+.add-child .input-group2 input{
 
+}
 .add-child #link::placeholder{
     font-size: 13px;
 }
