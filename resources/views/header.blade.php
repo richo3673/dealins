@@ -23,19 +23,8 @@
 <div class="navbar">
     <div class="left">
         <a style="display: flex" href="{{ route('home') }}">
-
-            <div id="container" style="white-space:nowrap">
-
-                <div id="image" style="display:inline;">
-                    <img style="width: 25px"
-                         src="/dealin.png">
-                </div>
-
-                <div id="texts" style="display:inline; white-space:nowrap;">
-                    <p> Deal.in </p>
-                </div>
-
-            </div>
+            <img style="width: 25px"
+                    src="/dealin.png" align="left"><p> Deal.in </p>
         </a>
     </div>
 
