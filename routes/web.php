@@ -21,7 +21,7 @@ Route::get('/login', function () {
     return view('welcome');
 });
 
-//Route::get('/mine', [MainController::class, 'byUserId'])->middleware(['auth'])->name('mine');
+Route::get('/mine', [MainController::class, 'byUserId'])->middleware(['auth'])->name('mine');
 Route::post('/mine', [MainController::class, 'byUserId'])->middleware(['auth'])->name('mine');
 Route::get('/riwayat', [MainController::class, 'riwayat'])->middleware(['auth'])->name('riwayat');
 
