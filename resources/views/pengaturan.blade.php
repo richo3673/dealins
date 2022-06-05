@@ -26,9 +26,8 @@
                 <div class="add-child">
                     <div class="input-group2">
                         @method('delete')
-                        <form method="POST" data-action="{{ route('hapus_riwayat') }}" id="add-user-form"
+                        <form method="get" data-action="{{ route('hapus_riwayat') }}"
                               enctype="multipart/form-data">
-                            @csrf
                             <x-button class="h-10 text-base text-red-600">hapus</x-button>
                         </form>
                     </div>
