@@ -22,7 +22,7 @@
 {{--navbar--}}
 <div class="navbar">
     <div class="left">
-        <a href="{{ route('home') }}">
+        <a style="display: flex" href="{{ route('home') }}">
             <p> <img style="width: 25px"
                     src="/dealin.png">Deal.in </p>
         </a>
