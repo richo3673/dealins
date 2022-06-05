@@ -42,7 +42,7 @@
                         @method('delete')
                         <form method="post" action="{{ route('hapus_akun') }}">
                             @csrf
-                            <x-button class=" h-10 text-base ">hapus</x-button>
+                            <x-button2 class=" h-10 text-base ">hapus</x-button2>
                         </form>
                     </div>
                 </div>
