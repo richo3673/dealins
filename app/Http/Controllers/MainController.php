@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
-use Response;
 
 class MainController extends Controller
 {
@@ -237,7 +236,7 @@ class MainController extends Controller
         $riwayat = Riwayat::where('user_id', Auth::user()->id)->get();
         if ($riwayat) {
             $riwayat->each->delete();
-            return response()->json(['success'=>'Berhasil dihapus.']);
+            return redirect()->route('pengaturan')->with('success', 'Riwayat berhasil dihapus!');
         } else {
             return redirect()->route('pengaturan')->with('error', 'Ooops, riwayat tidak ditemukan!');
         }
