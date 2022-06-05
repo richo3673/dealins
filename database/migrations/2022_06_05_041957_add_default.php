@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('riwayats', function (Blueprint $table) {
-            $table->integer('dilihat')->nullable();
+            $table->dropColumn('dilihat');
+
         });
     }
 

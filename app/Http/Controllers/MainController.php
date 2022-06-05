@@ -138,7 +138,7 @@ class MainController extends Controller
         $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
         if ($dealin) {
             $dealin->delete();
-            return redirect()->route('mine')->with('success', 'Iklan berhasil dihapus !');;
+            return redirect()->route('mine')->with('success', 'Iklan berhasil dihapus !');
         } else {
             return redirect()->route('mine')->with('error', 'Ooops, iklan gagal dihapus !');
         }
@@ -210,5 +210,14 @@ class MainController extends Controller
         } else {
             return redirect()->route('mine')->with('error', 'Ooops, riwayat tidak ditemukan!');
         }
+    }
+
+    public function deleteUser(Request $request){
+        $user = User::find(Auth::user()->id);
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        $user->delete();
+            return redirect()->route('home')->with('success', 'Akun anda telah dihapus !');;
     }
 }
