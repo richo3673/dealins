@@ -22,11 +22,10 @@ class MainController extends Controller
     {
         $dealin = Dealin::all()->sortByDesc('id');
         if (Auth::check()) {
-            $search = Search::where('user_id', Auth::user()->id)->get();
-
+            $search = Search::where('user_id', Auth::user()->id)->first();
             if($search){
-                $plucked = $search->pluck('search')->toArray();
-                $recommendation = Dealin::whereIn('judul', 'ilike', [$plucked])->take(4)->get();
+                $cari = $search->search;
+                $recommendation = Dealin::where('judul', 'ilike', '%' . $cari . '%')->take(4)->get();
                 return view('dashboard')->with(['dealins' => $dealin])->with(['recommendation' => $recommendation]);
             }
         }else {
