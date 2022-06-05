@@ -37,9 +37,9 @@ Route::get('/', [MainController::class, 'home'])->name('home');
 Route::get('/profile', [MainController::class, 'showProfile'])->middleware(['auth'])->name('profile');
 Route::post('/profile/update', [MainController::class, 'updateProfile'])->middleware(['auth'])->name('update_profile');
 Route::get('/pengaturan', [MainController::class, 'pengaturan'])->middleware(['auth'])->name('pengaturan');
-//Route::get('/pengaturan/hapus_riwayat', [MainController::class, 'hapusRiwayat'])->middleware(['auth'])->name('hapus_riwayat');
+Route::get('/pengaturan/hapus_riwayat', [MainController::class, 'hapusRiwayat'])->middleware(['auth'])->name('hapus_riwayat');
 Route::post('/pengaturan/hapus_akun', [MainController::class, 'deleteUser'])->middleware(['auth'])->name('hapus_akun');
-Route::resource('hapus', 'MainController@hapusRiwayat')->middleware(['auth']);
+Route::resource('hapus', MainController::class);
 
 
 
