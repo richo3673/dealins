@@ -43,7 +43,7 @@ class MainController extends Controller
     {
         # code...
 
-        $dealin = Dealin::where('user_id', Auth::user()->id)->get();
+        $dealin = Dealin::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
         return view('showmine')->with(['dealins' => $dealin]);
     }
 
