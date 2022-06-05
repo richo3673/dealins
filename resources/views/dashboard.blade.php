@@ -3,12 +3,11 @@
 <div class="flash-message">
         @include('flash-message')
     </div>
+
 @if(isset($recommendation))
-
+    <h4>Rekomendasi untukmu</h4>
 <div class="grid-container">
-
         @foreach($recommendation as $recommendations)
-                        <h1>{{$recommendations}}</h1>
             <div class="grid-item">
                 <a href="/dealins/{{$recommendations->id}}">
                     <div class="grid-img">
