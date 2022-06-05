@@ -236,7 +236,7 @@ class MainController extends Controller
         $riwayat = Riwayat::where('user_id', Auth::user()->id)->get();
         if ($riwayat) {
             $riwayat->each->delete();
-            return redirect()->route('pengaturan')->with('success', 'Riwayat berhasil dihapus !');;
+            return response()->json(['success'=>'Berhasil dihapus.']);
         } else {
             return redirect()->route('pengaturan')->with('error', 'Ooops, riwayat tidak ditemukan!');
         }
