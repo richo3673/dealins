@@ -6,6 +6,7 @@ use App\Models\Dealin;
 use App\Models\Search;
 use App\Models\User;
 use App\Models\Riwayat;
+use Aws\History;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -156,6 +157,7 @@ class MainController extends Controller
                     $val = $history->dicari;
                     Search::where('search', $cari)->update(['dicari' => ($val + 1)]);
                 } else {
+                    $history = new History();
                     $history->user_id = Auth::user()->id;
                     $history->search = $cari;
                     $history->save();

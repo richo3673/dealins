@@ -14,7 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::table('riwayats', function (Blueprint $table) {
-            $table->foreign('iklan_id')->references('id')->on('dealins')->onDelete('cascade');
+            $table->dropForeign('riwayat_user_id_foreign');
+        });
+        Schema::table('dealins', function (Blueprint $table){
+            $table->bigInteger('user_Id')->change();
+            $table->unsignedBigInteger('user_id')->change();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+        Schema::table('riwayats', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
