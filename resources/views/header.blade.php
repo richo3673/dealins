@@ -23,7 +23,8 @@
 <div class="navbar">
     <div class="left">
         <a href="{{ route('home') }}">
-            <p> Deal.in </p>
+            <p> <img
+                    src="{{ "/dealin.png" }}">Deal.in </p>
         </a>
     </div>
 
