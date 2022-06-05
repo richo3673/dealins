@@ -9,26 +9,26 @@
             <div class="heading">
                 <h2>PENCARIAN POPULER</h2>
             </div>
-            <div class="konten">
-                <p>Handphone</p>
-                <p>Otomotif</p>
-                <p>Elektronik</p>
-                <p>Pakaian</p>
-            </div>
+            <ul>
+                <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Handphone</a></li>
+                <li><i class="fa-solid fa-chevron-right"></i> <a href="#portfolio">Otomotif</a></li>
+                <li><i class="fa-solid fa-chevron-right"></i> <a href="#services">Elektronik</a></li>
+                <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Pakaian</a></li>
+            </ul>
         </div>
         <div class="footer-grid-item">
-        <div class="heading">
+            <div class="heading">
                 <h2>LINK</h2>
             </div>
-            <div class="konten">
-                <p>Beranda</p>
-                <p>Tentang Kami</p>
-                <p>Syarat dan Ketentuan</p>
-                <p>Kebijakan Privasi</p>
-            </div>
+            <ul>
+                <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Beranda</a></li>
+                <li><i class="fa-solid fa-chevron-right"></i> <a href="#portfolio">Tentang kami</a></li>
+                <li><i class="fa-solid fa-chevron-right"></i> <a href="#services">Layanan</a></li>
+                <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Syarat dan Ketentuan</a></li>
+            </ul>
         </div>
         <div class="footer-grid-item">
-        <div class="heading">
+            <div class="heading">
                 <h2>HUBUNGI KAMI</h2>
             </div>
             <div class="about">
@@ -39,8 +39,8 @@
                 <h5>Telepon : +62831 1211 1022</h5>
                 <h5>Email   : support@dealin.ga</h5>
             </div>
-            </div>
         </div>
+    </div>
     </div>
 
     <div class="footer-copyright">
