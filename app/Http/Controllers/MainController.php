@@ -25,7 +25,7 @@ class MainController extends Controller
             $search = Search::where('user_id', Auth::user()->id)->first();
             if($search){
                 $cari = $search->search;
-                $recommendation = Dealin::where('judul', 'ilike', '%' . $cari . '%')->take(4);
+                $recommendation = Dealin::where('judul', 'ilike', '%' . $cari . '%');
                 return view('dashboard')->with(['dealins' => $dealin])->with(['recommendation' => $recommendation]);
             }
         }else {
