@@ -11,8 +11,8 @@
             </div>
             <ul>
                 <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Handphone</a></li>
-                <li><i class="fa-solid fa-chevron-right"></i> <a href="#portfolio">Otomotif</a></li>
-                <li><i class="fa-solid fa-chevron-right"></i> <a href="#services">Elektronik</a></li>
+                <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Otomotif</a></li>
+                <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Elektronik</a></li>
                 <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Pakaian</a></li>
             </ul>
         </div>
@@ -22,8 +22,8 @@
             </div>
             <ul>
                 <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Beranda</a></li>
-                <li><i class="fa-solid fa-chevron-right"></i> <a href="#portfolio">Tentang kami</a></li>
-                <li><i class="fa-solid fa-chevron-right"></i> <a href="#services">Layanan</a></li>
+                <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Tentang kami</a></li>
+                <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Layanan</a></li>
                 <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Syarat dan Ketentuan</a></li>
             </ul>
         </div>
