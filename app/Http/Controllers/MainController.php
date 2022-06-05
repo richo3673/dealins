@@ -224,9 +224,13 @@ class MainController extends Controller
     }
 
     public function deleteUser(Request $request){
-        $user = User::find(Auth::user()->id);
-        $user->delete();
-        Auth::guard('web')->logout();
-            return redirect()->route('home')->with('success', 'Akun anda telah dihapus !');
+        $user = \User::find(Auth::user()->id);
+
+        Auth::logout();
+
+        if ($user->delete()) {
+
+            return Redirect::route('home')->with('success', 'Akun anda berhasil dihapus');
+        }
     }
 }
