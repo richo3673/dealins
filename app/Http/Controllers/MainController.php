@@ -149,16 +149,18 @@ class MainController extends Controller
     {
         $cari = $request->cari;
         $kota = $request->kota;
-        if(isset($cari)){
-            $history = Search::where('search', $cari)->first();
-                if(isset($history)){
-                    $val= $history->dicari;
-                    Search::where('search', $cari)->update(['dicari' => ($val+1)]);
-                }else{
+        if (Auth::check()) {
+            if (isset($cari)) {
+                $history = Search::where('search', $cari)->first();
+                if (isset($history)) {
+                    $val = $history->dicari;
+                    Search::where('search', $cari)->update(['dicari' => ($val + 1)]);
+                } else {
                     $history->user_id = Auth::user()->id;
                     $history->search = $cari;
                     $history->save();
                 }
+            }
         }
         if (isset($cari) && !isset($kota)) {
             $dealin = Dealin::where('judul', 'ilike', '%' . $cari . '%')->get();

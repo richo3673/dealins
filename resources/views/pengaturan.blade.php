@@ -40,9 +40,8 @@
                 <div class="add-child">
                     <div class="input-group2">
                         @method('delete')
-                        <form method="post" action="{{ route('hapus_akun') }}"
-                              @csrf
-                              enctype="multipart/form-data">
+                        <form method="post" action="{{ route('hapus_akun') }}">
+                            @csrfs
                             <x-button class=" h-10 text-base text-red-600">hapus</x-button>
                         </form>
                     </div>
