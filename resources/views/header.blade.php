@@ -62,7 +62,7 @@
                 </div>
             @else
                 <div id="myDropdown" class="dropdown-content">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="GET" action="{{ route('login') }}">
                         @csrf
 
                         <x-dropdown-link :href="route('login')"
