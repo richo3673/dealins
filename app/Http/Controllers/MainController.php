@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Response;
 
 class MainController extends Controller
 {
