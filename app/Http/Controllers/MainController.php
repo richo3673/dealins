@@ -22,7 +22,7 @@ class MainController extends Controller
     {
         $dealin = Dealin::all()->sortByDesc('id');
         if (Auth::check()) {
-            $search = Search::where('user_id', Auth::user()->id)->sortByDesc('dicari')->first();
+            $search = Search::where('user_id', Auth::user()->id)->orderBy('dicari', 'DESC')->first();
             if($search){
                 $cari = $search->search;
                 $recommendation = Dealin::where('judul', 'ilike', '%' . $cari . '%')->take(4)->get();
