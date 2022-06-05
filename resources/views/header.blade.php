@@ -23,7 +23,7 @@
 <div class="navbar">
     <div class="left">
         <a style="display: flex" href="{{ route('home') }}">
-            <p> <img style="width: 25px; transform: translateY(10px)"
+            <p> <img style="width: 25px; transform: translateY(5px)"
                     src="/dealin.png" align="left">eal.in </p>
         </a>
     </div>
