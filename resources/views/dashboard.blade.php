@@ -3,7 +3,7 @@
 <div class="flash-message">
         @include('flash-message')
     </div>
-
+@if(isset($recommendation))
 <h4> Rekomendasi untukmu</h4>
 <div class="grid-container">
         @foreach($recommendation as $recommendations)
@@ -21,7 +21,7 @@
         @endforeach
 
     </div>
-
+@endif
 <h4> iklan terbaru</h4>
 
 
