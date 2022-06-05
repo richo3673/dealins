@@ -141,7 +141,7 @@
     @endif
     @endif
     <div  class="line">
-    <a class="setting">
+    <a class="setting" href="{{ route('pengaturan') }}" class="{{(request()->is('/pengaturan'))? 'active' : ''}}">
         <div class="icon">
             <x-ri-settings-3-fill class="h-6 w-6"/>
         </div>

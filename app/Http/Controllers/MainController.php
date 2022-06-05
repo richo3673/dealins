@@ -197,4 +197,9 @@ class MainController extends Controller
         $dealin = Dealin::join('riwayats', 'riwayats.iklan_id', '=', 'dealins.id')->where('riwayats.user_id', Auth::user()->id)->orderBy('riwayats.updated_at', 'desc')->get();
         return view('history')->with(['dealins' => $dealin]);
     }
+
+    public function pengaturan(Request $request)
+    {
+        return view('pengaturan');
+    }
 }
