@@ -4,7 +4,7 @@
         @include('flash-message')
     </div>
 @if(isset($recommendation))
-<h4> Rekomendasi untukmu</h4>
+<h4>{{$recommendation}}</h4>
 <div class="grid-container">
         @foreach($recommendation as $recommendations)
             <div class="grid-item">
