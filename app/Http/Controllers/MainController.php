@@ -21,7 +21,16 @@ class MainController extends Controller
     public function home()
     {
         $dealin = Dealin::all()->sortByDesc('id');
-        return view('dashboard')->with(['dealins' => $dealin]);
+        if (Auth::check()) {
+            $search = Search::where('user_id', Auth::user()->id)->first();
+            if($search){
+                $cari = $search->search;
+                $recommendation = Dealin::where('judul', 'ilike', '%' . $cari . '%')->take(4);
+                return view('dashboard')->with(['dealins' => $dealin])->with(['recommendation' => $recommendation]);
+            }
+        }else {
+            return view('dashboard')->with(['dealins' => $dealin]);
+        }
     }
 
     public function byUserId(Request $request)

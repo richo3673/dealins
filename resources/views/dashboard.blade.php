@@ -3,7 +3,26 @@
 <div class="flash-message">
         @include('flash-message')
     </div>
-<h4> Rekomendasi iklan terbaru</h4>
+
+<h4> Rekomendasi untukmu</h4>
+<div class="grid-container">
+        @foreach($recommendation as $recommendations)
+            <div class="grid-item">
+                <a href="/dealins/{{$recommendations->id}}">
+                    <div class="grid-img">
+                    <img src="{{ url('https://dealinbucket.s3.amazonaws.com/images/'.$recommendations->file_path) }}">
+                    </div>
+                    <h1>Rp {{ number_format($recommendations->harga, 0, ',', '.') }}</h1>
+                    <p>{{ $recommendations->judul }}</p>
+                    <h2>{{ $recommendations->kecamatan}}, {{$recommendations->kota}}</h2>
+                    <h3>{{ $recommendations->created_at->format('d M') }}</h3>
+                </a>
+            </div>
+        @endforeach
+
+    </div>
+
+<h4> iklan terbaru</h4>
 
 
     <div class="filter">
@@ -19,6 +38,7 @@
             </form>
         <a>
 </a>
+
 
 @if(isset($cari))
         <h5>Menampilkan hasil untuk : {{$cari}}</h5>
