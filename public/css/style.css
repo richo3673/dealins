@@ -63,7 +63,7 @@
 .navbar .left {
     width: 220px;
     display: inline-block;
-    background-color: #746cf6;
+    background-color: #212121;
     vertical-align: middle;
     height: 100%;
 }
@@ -131,8 +131,8 @@
     width: 220px;
     position: fixed;
     left: 0;
-    background-color: #746cf6; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
+    background-color: #212121;
+    overflow-x: hidden;
     padding-top: 20px;
 }
 .sidenav .sidemenu{

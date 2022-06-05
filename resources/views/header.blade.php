@@ -106,7 +106,7 @@
             </div>
         </a>
 
-        <a href="{{ route('riwayat') }}" class="{{(request()->is('dealins/riwayat'))? 'active' : ''}}">
+        <a href="{{ route('riwayat') }}" class="{{(request()->is('/riwayat'))? 'active' : ''}}">
             <div class="icon">
                 <x-ri-history-fill class="h-6 w-6"/>
             </div>
