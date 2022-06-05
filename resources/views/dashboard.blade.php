@@ -6,8 +6,9 @@
 @if(isset($recommendation))
 
 <div class="grid-container">
-    {{$recommendation}}
+
         @foreach($recommendation as $recommendations)
+                        <h1>{{$recommendations}}</h1>
             <div class="grid-item">
                 <a href="/dealins/{{$recommendations->id}}">
                     <div class="grid-img">
