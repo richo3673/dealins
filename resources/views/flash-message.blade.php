@@ -1,7 +1,7 @@
 @if ($message = Session::get('success'))
     <div id="one" class="alert alert-success alert-block">
         <strong>{{ $message }}</strong>
-        <button id="btn" type="button" class="close" onclick="myFunction2()"><x-ri-close-line class="w-6 h-6 mt-3 text-green-600 transform-top2"/></button>
+        <button id="btn" type="button" class="close" onclick="myFunction2()"><x-ri-check-fill class="w-6 h-6 mt-3 text-green-600 transform-top2"/></button>
 
     </div>
 @endif
