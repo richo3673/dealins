@@ -546,3 +546,66 @@ h6{
 .add-child .input{
     width: 100px;
 }
+footer{
+    margin-left: 200px;
+    margin-top: 70px;
+}
+.footer-grid{
+    border-top: 0.1px solid rgba(141, 141, 141, 0.52);
+    background: rgba(255, 255, 255, 0.435) url(footer-bg.png) no-repeat right top;
+    background-size: contain;
+    display: grid;
+    grid-template-columns: 35% 17.5% 17.5% 30%;
+    background-color: #ffffff;
+    padding: 15px 15px;
+    text-align: left;
+    gap:10px;
+}
+.footer-grid-item {
+}
+.footer-grid-item .logo{
+    margin: 10px 0px 0px 50px;
+}
+.footer-grid-item .logo span{
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #8222e7;
+}
+.footer-grid-item .heading h2{
+    padding-bottom: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #27004e;
+    text-transform: uppercase;
+    position: relative;
+    font-family: "Poppins";
+}
+.footer-grid-item .konten p{
+    font-size: 13px;
+    padding: 5px;
+    color: #333333;
+}
+.footer-grid-item .about{
+    color: #141414;
+    margin-top: 7px;
+}
+.footer-grid-item .about h3{
+    font-size: 16px;
+}
+.footer-grid-item .about h5{
+    padding-left: 0;
+    font-size: 14px;
+}
+footer .footer-copyright {
+    text-align: center;
+}
+
+footer .footer-copyright p{
+    color: #565656;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 15px 0;
+
+}
