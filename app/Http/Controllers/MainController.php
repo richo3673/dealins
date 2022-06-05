@@ -157,7 +157,7 @@ class MainController extends Controller
                     $val = $history->dicari;
                     Search::where('search', $cari)->update(['dicari' => ($val + 1)]);
                 } else {
-                    $history = new History();
+                    $history = new Search();
                     $history->user_id = Auth::user()->id;
                     $history->search = $cari;
                     $history->save();

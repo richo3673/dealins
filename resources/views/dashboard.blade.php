@@ -1,5 +1,8 @@
 @include('header')
 <div class="main">
+<div class="flash-message">
+        @include('flash-message')
+    </div>
 <h4> Rekomendasi iklan terbaru</h4>
 
 
