@@ -39,7 +39,7 @@ Route::post('/profile/update', [MainController::class, 'updateProfile'])->middle
 Route::get('/pengaturan', [MainController::class, 'pengaturan'])->middleware(['auth'])->name('pengaturan');
 Route::get('/pengaturan/hapus_riwayat', [MainController::class, 'hapusRiwayat'])->middleware(['auth'])->name('hapus_riwayat');
 Route::post('/pengaturan/hapus_akun', [MainController::class, 'deleteUser'])->middleware(['auth'])->name('hapus_akun');
-Route::resource('delete_riwayat', [MainController::class, 'hapusRiwayat'])->middleware(['auth']);
+Route::resource('delete_riwayat', MainController::class, 'hapusRiwayat')->middleware(['auth']);
 
 
 
