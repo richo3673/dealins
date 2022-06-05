@@ -234,7 +234,7 @@ class MainController extends Controller
 
         if ($user->delete()) {
 
-            return Redirect::route('home')->with('success', 'Akun anda berhasil dihapus');
+            return redirect()->route('home')->with('success', 'Akun anda berhasil dihapus');
         }
     }
 }
