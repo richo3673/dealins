@@ -5,16 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="https://kit.fontawesome.com/f304ce662e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <script src="https://kit.fontawesome.com/f304ce662e.js" crossorigin="anonymous"></script>
     <link rel="manifest" href="/site.webmanifest">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/app.js"></script>
-    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
 
     <title>Deal.in</title>
 </head>
@@ -22,65 +22,74 @@
 
 {{--navbar--}}
 <div class="navbar">
-    <div class="left">
-        <a style="display: flex" href="{{ route('home') }}">
-            <p> <img style="width: 25px; transform: translateY(5px)"
-                    src="/dealin.png" align="left">eal.in </p>
-        </a>
+    <div class="navbar-grid">
+        <div class="navbar-grid-left">
+            <a href="{{ route('home') }}">
+                <p><img style="width: 25px; transform: translateY(5px)"
+                        src="/dealin.png" align="left">eal.in </p>
+            </a>
+        </div>
     </div>
-
-    <div class="right">
+    <div class="navbar-grid">
         <div class="search">
             <form class="group relative" action="{{ route('search') }}">
                 <input type="text" name="cari" placeholder="Cari barang di sini..">
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
-
-        <div class="dropdown">
+    </div>
+    <div class="navbar-grid">
+        <div class="user">
             <button onclick="myFunction()" class="dropbtn">
-                <div class="user">
-                    <x-forkawesome-user-circle-o class="w-7 h-7 mt-1"/>
-                </div>
-                <div class="user">
-                    <x-grommet-down class="w-4 h-4  mb-2"/>
-                </div>
+                <i class="fa-solid fa-circle-user"></i>
+                <i class="fa-solid fa-chevron-down chev"></i>
             </button>
             @if (Auth::check())
                 <div id="myDropdown" class="dropdown-content">
+                    <div style="border-bottom: 1px solid #732dd2">
+                        <h3>Halo,</h3><h2>Richo Wijaya</h2>
+                    </div>
                     <form method="POST" action="{{ route('mine') }}">
                         @csrf
-
                         <x-dropdown-link :href="route('mine')"
                                          onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                            {{ __('Iklan Saya') }}
+                            <p><i class="fa-solid fa-list"></i>&emsp;Iklan saya</p>
+
                         </x-dropdown-link>
                     </form>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-
                         <x-dropdown-link :href="route('logout')"
                                          onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                            {{ __('Keluar') }}
+                            <p class="dropctn"> <i class="fa-solid fa-right-from-bracket"></i>&emsp;Keluar</p>
                         </x-dropdown-link>
                     </form>
                 </div>
             @else
                 <div id="myDropdown" class="dropdown-content">
-                    <form method="GET" action="{{ route('login') }}">
+                    <div style="border-bottom: 1px solid #732dd2">
+                        <h3>Halo,</h3><h2>Richo Wijaya</h2>
+                    </div>
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
-
                         <x-dropdown-link :href="route('login')"
                                          onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                            {{ __('Log in') }}
+                            <p><i class="fa-solid fa-list"></i>&emsp;Iklan saya</p>
+
                         </x-dropdown-link>
                     </form>
                 </div>
             @endif
+            <a href="youtube.com">
+                <button class="buttonjual">
+                    <i class="fa-solid fa-plus"></i> JUAL
+                </button>
+            </a>
         </div>
-        <a href="{{ route('create-form') }}" class="buttonjual">PASANG IKLAN</a>
     </div>
 </div>
 

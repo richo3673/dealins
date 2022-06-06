@@ -23,18 +23,18 @@ class MainController extends Controller
         $dealin = Dealin::all()->sortByDesc('id');
         if (Auth::check()) {
             $search = Search::where('user_id', Auth::user()->id)->orderBy('dicari', 'DESC')->first();
-            if(isset($search)) {
+            if (isset($search)) {
                 $cari = $search->search;
                 $recommendation = Dealin::where('judul', 'ilike', '%' . $cari . '%')->take(4)->get();
                 if (isset($recommendation)) {
                     return view('dashboard')->with(['dealins' => $dealin])->with(['recommendation' => $recommendation]);
-                }else{
+                } else {
                     return view('dashboard')->with(['dealins' => $dealin]);
                 }
-            }else{
+            } else {
                 return view('dashboard')->with(['dealins' => $dealin]);
             }
-        }else {
+        } else {
             return view('dashboard')->with(['dealins' => $dealin]);
         }
     }
@@ -47,7 +47,7 @@ class MainController extends Controller
         return view('showmine')->with(['dealins' => $dealin]);
     }
 
-    public function show(Request $request, $id)
+    public function show($id)
     {
         # code...
         $dealin = Dealin::find($id);
@@ -59,24 +59,18 @@ class MainController extends Controller
             $cek = Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->first();
             if ($cek) {
                 $val = $cek->dilihat;
-                Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->update(['updated_at' => Carbon::now(), 'dilihat' => ($val+1)]);
+                Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->update(['updated_at' => Carbon::now(), 'dilihat' => ($val + 1)]);
             } else {
                 $riwayat = new Riwayat();
                 $riwayat->iklan_id = $id;
                 $riwayat->user_id = $viewer;
+                $riwayat->dilihat = 1;
                 $riwayat->save();
             }
             return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak])->with(['jumlah_view' => $jumlah_view]);
         } else {
             return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak])->with(['jumlah_view' => $jumlah_view]);
         }
-    }
-
-    public function edit(Request $request, $id)
-    {
-        # code...
-        $dealin = Dealin::find($id);
-        return view('edit', ['dealin' => $dealin]);
     }
 
     public function update(Request $request, $id)
@@ -101,17 +95,10 @@ class MainController extends Controller
         $dealin->kota = $request->kota;
         $dealin->provinsi = $request->provinsi;
         if ($dealin->save()) {
-            $user = $dealin->user_id;
-            $kontak = User::where('id', $user)->get(['telepon', 'facebook']);
             return redirect()->route('mine')->with('success', 'Iklan berhasil dupdate !');;
-        }else{
+        } else {
             return redirect()->route('mine')->with('error', 'Ooops, Perbuahan gagal disimpan !');
         }
-    }
-
-    public function create(Request $request)
-    {
-        return view('add');
     }
 
     public function store(Request $request)
@@ -148,17 +135,16 @@ class MainController extends Controller
         }
     }
 
-    public function delete(Request $request, $id)
+    public function edit(Request $request, $id)
     {
         # code...
-        $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
-        if ($dealin) {
-            $dealin->delete();
-            return redirect()->route('mine')->with('success', 'Iklan berhasil dihapus !');
-        } else {
-            return redirect()->route('mine')->with('error', 'Ooops, iklan gagal dihapus !');
-        }
-        return; // 404
+        $dealin = Dealin::find($id);
+        return view('edit', ['dealin' => $dealin]);
+    }
+
+    public function create(Request $request)
+    {
+        return view('add');
     }
 
     public function search(Request $request)
@@ -209,8 +195,7 @@ class MainController extends Controller
         $user->facebook = $request->facebook;
         if ($user->save()) {
             return redirect()->route('profile')->with('success', 'Profil berhasil dupdate !');
-        }
-        else{
+        } else {
             return redirect()->route('profile')->with('error', 'Ooops, Perbuahan gagal disimpan !');
         }
     }
@@ -232,7 +217,8 @@ class MainController extends Controller
         return view('pengaturan');
     }
 
-    public function hapusRiwayat(){
+    public function hapusRiwayat()
+    {
         $riwayat = Riwayat::where('user_id', Auth::user()->id)->get();
         if ($riwayat) {
             $riwayat->each->delete();
@@ -242,7 +228,21 @@ class MainController extends Controller
         }
     }
 
-    public function deleteUser(Request $request){
+    public function delete(Request $request, $id)
+    {
+        # code...
+        $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
+        if ($dealin) {
+            $dealin->delete();
+            return redirect()->route('mine')->with('success', 'Iklan berhasil dihapus !');
+        } else {
+            return redirect()->route('mine')->with('error', 'Ooops, iklan gagal dihapus !');
+        }
+        return; // 404
+    }
+
+    public function deleteUser(Request $request)
+    {
         $user = User::find(Auth::user()->id);
 
         Auth::logout();
