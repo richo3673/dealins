@@ -73,34 +73,6 @@ class MainController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
-    {
-        # Validations before updating
-        $this->validate($request, [
-            'image' => 'required',
-            'image.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
-        ]);
-
-        $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
-        $path = $request->file('image')->store('images', 's3');
-        $dealin->file_path = basename($path);
-        $dealin->judul = $request->judul;
-        $dealin->kategori = $request->kategori;
-        $dealin->kondisi = $request->kondisi;
-        $dealin->harga = $request->harga;
-
-        $dealin->desc = $request->desc;
-        $dealin->kelurahan = $request->kelurahan;
-        $dealin->kecamatan = $request->kecamatan;
-        $dealin->kota = $request->kota;
-        $dealin->provinsi = $request->provinsi;
-        if ($dealin->save()) {
-            return redirect()->route('mine')->with('success', 'Iklan berhasil dupdate !');;
-        } else {
-            return redirect()->route('mine')->with('error', 'Ooops, Perbuahan gagal disimpan !');
-        }
-    }
-
     public function store(Request $request)
     {
         # Validations before updating
@@ -135,6 +107,36 @@ class MainController extends Controller
         }
     }
 
+    public function update(Request $request, $id)
+    {
+        # Validations before updating
+        $this->validate($request, [
+            'image' => 'required',
+            'image.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
+        ]);
+
+        $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
+        $path = $request->file('image')->store('images', 's3');
+        $dealin->file_path = basename($path);
+        $dealin->judul = $request->judul;
+        $dealin->kategori = $request->kategori;
+        $dealin->kondisi = $request->kondisi;
+        $dealin->harga = $request->harga;
+
+        $dealin->desc = $request->desc;
+        $dealin->kelurahan = $request->kelurahan;
+        $dealin->kecamatan = $request->kecamatan;
+        $dealin->kota = $request->kota;
+        $dealin->provinsi = $request->provinsi;
+        if ($dealin->save()) {
+            return redirect()->route('mine')->with('success', 'Iklan berhasil dupdate !');;
+        } else {
+            return redirect()->route('mine')->with('error', 'Ooops, Perbuahan gagal disimpan !');
+        }
+    }
+
+
+
     public function edit(Request $request, $id)
     {
         # code...
@@ -153,10 +155,10 @@ class MainController extends Controller
         $kota = $request->kota;
         if (Auth::check()) {
             if (isset($cari)) {
-                $history = Search::where('search', $cari)->first();
+                $history = Search::where('search', $cari)->where('user_id',Auth::user()->id)->first();
                 if (isset($history)) {
                     $val = $history->dicari;
-                    Search::where('search', $cari)->update(['dicari' => ($val + 1)]);
+                    Search::where('search', $cari)->where('user_id',Auth::user()->id)->update(['dicari' => ($val + 1)]);
                 } else {
                     $history = new Search();
                     $history->user_id = Auth::user()->id;
