@@ -19,7 +19,8 @@
     <title>Deal.in</title>
 </head>
 <body>
-<div id="konfirmasi-hapus-akun" class="pop" scroll="no">
+
+<div id="konfirmasi-hapus-akun" class="pop">
     <div class="confirmation-box">
         <h1>KONFIRMASI</h1>
         <p>Kami akan menghapus seluruh data anda, termasuk iklan yang anda pasang. Setelah dihapus, akun anda tidak dapat dipulihkan kembali.</p>
@@ -36,7 +37,7 @@
     </div>
 </div>
 
-<div id="konfirmasi-hapus-riwayat" class="pop2" scroll="no">
+<div id="konfirmasi-hapus-riwayat" class="pop2">
     <div class="confirmation-box">
         <h1>KONFIRMASI</h1>
         <p>Seluruh riwayat iklan anda akan dihapus dan tidak dapat dipulihkan</p>
