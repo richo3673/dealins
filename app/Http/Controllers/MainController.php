@@ -134,7 +134,18 @@ class MainController extends Controller
             return redirect()->route('mine')->with('error', 'Ooops, Perbuahan gagal disimpan !');
         }
     }
-
+    public function delete(Request $request, $id)
+    {
+        # code...
+        $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
+        if ($dealin) {
+            $dealin->delete();
+            return redirect()->route('mine')->with('success', 'Iklan berhasil dihapus !');
+        } else {
+            return redirect()->route('mine')->with('error', 'Ooops, iklan gagal dihapus !');
+        }
+        return; // 404
+    }
 
 
     public function edit(Request $request, $id)
@@ -153,20 +164,22 @@ class MainController extends Controller
     {
         $cari = $request->cari;
         $kota = $request->kota;
+        //Menambahkan ke riwayat pencarian
         if (Auth::check()) {
             if (isset($cari)) {
-                $history = Search::where('search', $cari)->where('user_id',Auth::user()->id)->first();
-                if (isset($history)) {
-                    $val = $history->dicari;
+                $search = Search::where('search', $cari)->where('user_id',Auth::user()->id)->first();
+                if (isset($search)) {
+                    $val = $search->dicari;
                     Search::where('search', $cari)->where('user_id',Auth::user()->id)->update(['dicari' => ($val + 1)]);
                 } else {
-                    $history = new Search();
-                    $history->user_id = Auth::user()->id;
-                    $history->search = $cari;
-                    $history->save();
+                    $search = new Search();
+                    $search->user_id = Auth::user()->id;
+                    $search->search = $cari;
+                    $search->save();
                 }
             }
         }
+        //Mencari iklan
         if (isset($cari) && !isset($kota)) {
             $dealin = Dealin::where('judul', 'ilike', '%' . $cari . '%')->get();
         } elseif (isset($kota) && !isset($cari)) {
@@ -204,12 +217,6 @@ class MainController extends Controller
 
     public function riwayat()
     {
-        $riwayat = Riwayat::where('user_id', Auth::user()->id)->get();
-//        $id = array();
-//        foreach ($riwayat as $riwayats) {
-//            $id[] = $riwayats->iklan_id;
-//        }
-//        $dealin = Dealin::whereIn('id', $id)->orderBy($riwayat->created_at, 'DESC')->get();
         $dealin = Dealin::join('riwayats', 'riwayats.iklan_id', '=', 'dealins.id')->where('riwayats.user_id', Auth::user()->id)->orderBy('riwayats.updated_at', 'desc')->get();
         return view('history')->with(['dealins' => $dealin]);
     }
@@ -230,19 +237,6 @@ class MainController extends Controller
         }
     }
 
-    public function delete(Request $request, $id)
-    {
-        # code...
-        $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
-        if ($dealin) {
-            $dealin->delete();
-            return redirect()->route('mine')->with('success', 'Iklan berhasil dihapus !');
-        } else {
-            return redirect()->route('mine')->with('error', 'Ooops, iklan gagal dihapus !');
-        }
-        return; // 404
-    }
-
     public function deleteUser(Request $request)
     {
         $user = User::find(Auth::user()->id);
@@ -250,7 +244,6 @@ class MainController extends Controller
         Auth::logout();
 
         if ($user->delete()) {
-
             return redirect()->route('home')->with('success', 'Akun anda berhasil dihapus');
         }
     }
