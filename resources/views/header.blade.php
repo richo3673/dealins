@@ -48,7 +48,7 @@
             @if (Auth::check())
                 <div id="myDropdown" class="dropdown-content">
                     <div style="border-bottom: 1px solid #732dd2">
-                        <h3>Halo,</h3><h2>Richo Wijaya</h2>
+                        <h3>Halo,</h3><h2>{{strtok(Auth::user()->name, " ")}}</h2>
                     </div>
                     <form method="POST" action="{{ route('mine') }}">
                         @csrf
@@ -70,9 +70,6 @@
                 </div>
             @else
                 <div id="myDropdown" class="dropdown-content">
-                    <div style="border-bottom: 1px solid #732dd2">
-                        <h3>Halo,</h3><h2>Richo Wijaya</h2>
-                    </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <x-dropdown-link :href="route('login')"
