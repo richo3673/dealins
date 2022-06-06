@@ -25,11 +25,9 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group2">
-                        @method('delete')
-                        <form method="get" action="{{ route('hapus_riwayat') }}"
-                              enctype="multipart/form-data">
-                            <x-button class="h-10 text-base text-red-600">hapus</x-button>
-                        </form>
+                        <<button class="conf-btn" onclick="huFunction2()">
+                            BERSIHKAN
+                        </button>
                     </div>
                 </div>
 
@@ -39,11 +37,9 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group2">
-                        @method('delete')
-                        <form method="post" action="{{ route('hapus_akun') }}">
-                            @csrf
-                            <x-button2 class=" h-10 text-base ">hapus</x-button2>
-                        </form>
+                        <button class="conf-btn" onclick="huFunction()">
+                            HAPUS
+                        </button>
                     </div>
                 </div>
             </div>

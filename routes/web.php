@@ -39,5 +39,4 @@ Route::get('/pengaturan/hapus_riwayat', [MainController::class, 'hapusRiwayat'])
 Route::post('/pengaturan/hapus_akun', [MainController::class, 'deleteUser'])->middleware(['auth'])->name('hapus_akun');
 
 
-
 require __DIR__ . '/auth.php';

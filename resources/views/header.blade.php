@@ -19,6 +19,39 @@
     <title>Deal.in</title>
 </head>
 <body>
+<div id="konfirmasi-hapus-akun" class="pop" scroll="no">
+    <div class="confirmation-box">
+        <h1>KONFIRMASI</h1>
+        <p>Kami akan menghapus seluruh data anda, termasuk iklan yang anda pasang. Setelah dihapus, akun anda tidak dapat dipulihkan kembali.</p>
+        <p> Untuk melanjutkan, tekan tombol berwarna merah</p>
+        <div class="btnconf">
+            <button style="background-color: #2f2f2f" onclick="huFunction()" class="conf-btn">Batal
+            </button>
+            <form method="post" action="{{ route('hapus_akun') }}">
+                @csrf
+                <button class="conf-btn">Lanjut
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="konfirmasi-hapus-riwayat" class="pop2" scroll="no">
+    <div class="confirmation-box">
+        <h1>KONFIRMASI</h1>
+        <p>Seluruh riwayat iklan anda akan dihapus dan tidak dapat dipulihkan</p>
+        <p> Untuk melanjutkan, tekan tombol berwarna merah</p>
+        <div class="btnconf">
+            <button style="background-color: #2f2f2f" onclick="huFunction2()" class="conf-btn">Batal
+            </button>
+            <form method="get" action="{{ route('hapus_riwayat') }}">
+                @csrf
+                <button class="conf-btn">Lanjut
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
 
 {{--navbar--}}
 <div class="navbar">

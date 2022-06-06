@@ -1,7 +1,12 @@
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
-
+function huFunction() {
+    $(".pop").toggle();
+}
+function huFunction2() {
+    $(".pop2").toggle();
+}
 window.onclick = function (event) {
     if (!event.target.matches('i')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");

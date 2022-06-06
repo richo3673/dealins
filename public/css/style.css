@@ -14,6 +14,7 @@
     display: grid;
     grid-template-columns: 13.5% 50% 36.5%;
 }
+
 @media (min-width : 900px) {
     .navbar{
         grid-template-columns: 14.5% 69% 16.5%;
@@ -683,3 +684,68 @@ footer .footer-copyright p{
 
 }
 
+.conf-btn{
+    letter-spacing: 2px;
+    padding: 10px 15px;
+    font-size: 15px;
+    background-color: red;
+    font-weight: bold;
+    text-space: 5px;
+    color: white;
+    border-radius: 5px;
+}
+.pop{
+    margin: 0px !important;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    position: fixed;
+    display: none;
+    backdrop-filter: blur(10px);
+    transition: opacity 500ms;
+}
+.pop2{
+    margin: 0px !important;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    position: fixed;
+    display: none;
+    backdrop-filter: blur(10px);
+    transition: opacity 500ms;
+}
+.confirmation-box{
+    position: fixed;
+    z-index: 6;
+    width: 30%;
+    height: 30%;
+    margin: 18% 35% 0px 35%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border : 2px solid red;
+    transition: all 5s ease-in-out;
+}
+
+.confirmation-box h1{
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    color: red;
+    font-weight: bolder;
+}
+
+.confirmation-box  p{
+    text-align: center;
+    padding: 0 15px;
+    font-size: 15px;
+}
+
+.confirmation-box .btnconf{
+    display: inline-block;
+    margin-left: 140px;
+    padding-top: 20px;
+}
+.confirmation-box form{
+    display: inline-block;
+
+}
