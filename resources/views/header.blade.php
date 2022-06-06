@@ -93,7 +93,7 @@
                     </form>
                 </div>
             @endif
-            <a href="youtube.com">
+            <a href="{{ route('create-form') }}">
                 <button class="buttonjual">
                     <i class="fa-solid fa-plus"></i> JUAL
                 </button>
