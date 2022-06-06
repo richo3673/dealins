@@ -70,12 +70,24 @@
                 </div>
             @else
                 <div id="myDropdown" class="dropdown-content">
+                    <div style="border-bottom: 1px solid #732dd2">
+                        <h3></h3><h2>Masuk untuk lebih banyak fitur</h2>
+                    </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <x-dropdown-link :href="route('login')"
                                          onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                             <p><i class="fa-solid fa-right-to-bracket"></i>&emsp;Log In</p>
+
+                        </x-dropdown-link>
+                    </form>
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <x-dropdown-link :href="route('register')"
+                                         onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                            <p><i class="fa-solid fa-user-plus"></i>&emsp;Register</p>
 
                         </x-dropdown-link>
                     </form>
