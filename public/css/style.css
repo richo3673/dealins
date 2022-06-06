@@ -3,24 +3,6 @@
 * {
     font-family: 'Poppins', sans-serif;
 }
-@media screen and (max-width: 1168px) {
-    .navbar input{
-        display: none !important;
-    }
-
-    .buttonjual{
-        display: inline-block !important;
-        transform: translateY(-200%) translateX(600%)!important;
-
-    }
-    .dropdown{
-
-    }
-    .user, .dropdown-content{
-        display: none !important;
-    }
-}
-
 .navbar {
     z-index: 1;
     border-bottom: 0.1px solid rgba(162, 162, 162, 0.29);
@@ -29,97 +11,127 @@
     top: 0;
     width: 100%;
     height: 70px;
+    border: 2px solid blue;
+    display: grid;
+    grid-template-columns: 13.5% 50% 36.5%;
 }
+@media (min-width : 900px) {
+    .navbar{
+        grid-template-columns: 13.5% 70% 16.5%;
+    }
 
-.navbar .right {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-
 }
-
-.navbar .right .bi-class-name {
-    display: block;
-    margin-left: 200px;
-    color: black;
-}
-
-.navbar .right  input[type="text"]{
-    width: 150%;
-    border-radius: 20px;
-    border-color: #732dd2;
-    height: 38px;
-    margin-left: 60px;
-    font-size: 14px;
-}
-.navbar .right .dropdown{
-    margin-left: 750px;
-    float: right;
-}
-.navbar .right .dropdown .user{
-    display: inline-block;
-    pointer-events: none;
-}
-.navbar .left {
-    width: 220px;
-    display: inline-block;
-    background-color: #212121;
+.navbar-grid{
     vertical-align: middle;
+}
+.navbar-grid .navbar-grid-left{
+    background-color: #212121;
     height: 100%;
 }
 
-.navbar .left p {
+.navbar .navbar-grid .navbar-grid-left p {
     font-weight: normal;
     color: #ffffff;
-    margin: 15px 0;
-    padding:0px 0px 0px 27px;
+    padding:14px 0px 0px 27px;
     font-size: 25px;
     display: block;
 }
-.dropbtn {
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    z-index: 1;
+
+.navbar-grid .search {
+    display: none;
+    margin: 10px 0 0 70px;
+}
+@media (min-width : 900px) {
+    .navbar-grid .search {
+        display: block;
+    }
+}
+.navbar-grid input[type="text"]{
+    border-radius: 20px;
+    border-color: #732dd2;
+    height: 38px;
+    font-size: 14px;
+    width: 29%;
 }
 
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #ffffff;
+.navbar-grid .search i{
+    font-size: 28px;
+    margin: auto;
+    color: #732dd2;
+    transform: translateY(20%);
+    -webkit-text-stroke: 1.5px white;
 }
+.navbar-grid .user{
+    height: 100%;
+}
+.navbar-grid .user .dropbtn{
+    height: 100%;
+
+}
+.navbar-grid .user .dropbtn i{
+    font-size: 28px;
+    color: #732dd2;
+
+}
+.navbar-grid .user .dropbtn .chev{
+    font-size: 15px;
+    transform: translateY(-20%);
+    color: #0a0a0a;
+
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #ffffff;
-    min-width: 140px;
+    width: 200px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    transform: translateX(-70%);
+    border-radius: 10px;
 }
-
+.dropdown-content h3{
+    display:inline-block;
+    font-size: 14px;
+    padding: 15px 5px 10px 20px;
+}
+.dropdown-content h2{
+    display:inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    word-wrap: break-word;
+    padding: 15px 38px 10px 0px;
+}
 .dropdown-content form {
-    padding: 10px;
+    padding: 15px;
     color: black;
     text-decoration: none;
     display: block;
 }
 
-.dropdown form:hover {background-color: #f5f5f5;}
+form:hover {background-color: #f5f5f5;}
 
 .show {display: block;}
 
-.right .buttonjual{
-    background-color: #732dd2;
-    border: none;
+.navbar-grid .user .buttonjual{
+    transform: translateY(-10%) translateX(10%);
+    width: 90px;
+    height: 38px;
+    border-radius: 100rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+    border: solid 3.5px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #732dd2, #ff48fa);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
+}
+.navbar-grid .user .buttonjual:hover{
+    box-shadow: none;
     color: white;
-    border-radius: 10px;
-    padding: 10px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 0px 0px 0px 5px;
-    cursor: pointer;
 }
 
 .main {
@@ -159,7 +171,12 @@
     background-color: #262626;
     border-radius: 7px;
 }
+@media (max-width: 1350px) {
+    .sidenav .box {
+        display: none;
+    }
 
+}
 .sidenav .box h2{
     color: #d2d2d2;
     font-size: 13px;
@@ -197,7 +214,7 @@
     padding-left: 10px;
 }
 
-/* The navigation menu links */
+/* Link sidebar */
 .sidenav a {
     margin: 8px 7px;
     padding: 12px 8px 12px 15px;
@@ -205,6 +222,14 @@
     font-size: 15px;
     color: #a4a4a4;
     display: block;
+}
+.sidenav p{
+    display: none;
+}
+@media (min-width: 1000px) {
+    .sidenav p{
+        display: block;
+    }
 }
 .sidenav .active{
     color: #f1f1f1;
@@ -218,9 +243,21 @@
 
 /* Style page content */
 .main {
-    margin-left: 200px; /* Same as the width of the sidebar */
     margin-top: 70px;
+    margin-left: 90px;
     padding: 0px 10px;
+}
+@media (min-width : 800px) {
+    .main {
+        margin-left: 150px;
+    }
+
+}
+@media (min-width : 900px) {
+    .main {
+        margin-left: 200px;
+    }
+
 }
 
 h4{
@@ -256,11 +293,30 @@ h5{
 .grid-container {
     width: 50%;
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto;
     background-color: #ffffff;
-    padding: 15px 66px;
+    padding: 15px 0px;
     text-align: left;
     gap:24px;
+}
+@media (min-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 15px 15px;
+    }
+
+}
+@media (min-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 15px 15px;
+    }
+
+}
+@media (min-width: 1520px) {
+    .grid-container { grid-template-columns: repeat(4, 1fr);
+        padding: 15px 66px;
+    }
 }
 
 .grid-item {
