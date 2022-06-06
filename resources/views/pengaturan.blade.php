@@ -25,7 +25,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group2">
-                        <button class="conf-btn" onclick="huFunction2()">
+                        <button style="background-color: #2f2f2f" class="conf-btn" onclick="huFunction2()">
                             BERSIHKAN
                         </button>
                     </div>
