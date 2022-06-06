@@ -78,7 +78,7 @@
                         <x-dropdown-link :href="route('login')"
                                          onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                            <p><i class="fa-solid fa-list"></i>&emsp;Log In</p>
+                            <p><i class="fa-solid fa-right-to-bracket"></i>&emsp;Log In</p>
 
                         </x-dropdown-link>
                     </form>
