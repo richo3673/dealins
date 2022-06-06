@@ -71,7 +71,7 @@
             @else
                 <div id="myDropdown" class="dropdown-content">
                     <div style="border-bottom: 1px solid #732dd2">
-                        <h3></h3><h2>Masuk untuk lebih banyak fitur</h2>
+                        <h3>Hai, </h3><h2>gabung yuk !</h2>
                     </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
