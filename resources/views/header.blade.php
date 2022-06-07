@@ -54,22 +54,6 @@
     </div>
 </div>
 
-<div id="konfirmasi-hapus-iklan" class="pop3">
-    <div class="confirmation-box">
-        <h1>KONFIRMASI</h1>
-        <p>Iklan anda akan dihapus secara permanen.</p>
-        <p>Untuk melanjutkan, tekan tombol berwarna merah</p>
-        <div class="btnconf">
-            <button style="background-color: #2f2f2f" onclick="huFunction3()" class="conf-btn">Batal
-            </button>
-            <form method="get" action="{{route('delete', ['id'=>$dealin->id])}}">
-                @csrf
-                <button class="conf-btn">Lanjut
-                </button>
-            </form>
-        </div>
-    </div>
-</div>
 
 {{--navbar--}}
 <div class="navbar">

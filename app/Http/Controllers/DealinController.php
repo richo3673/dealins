@@ -94,7 +94,7 @@ class DealinController extends Controller
         }
     }
 
-    public function delete(Request $request, $id)
+    public function delete($id)
     {
         $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
         $path = $dealin->file_path;

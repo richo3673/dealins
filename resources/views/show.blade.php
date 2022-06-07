@@ -95,8 +95,7 @@
 
                 <div class="item-container3">
                             @method('delete')
-{{--                    <a href="{{route('delete', ['id'=>$dealin->id])}}">--}}
-                    <button onclick="huFunction3()">
+                    <a href="{{route('delete', ['id'=>$dealin->id])}}">
                         <div class="icon3">
                             <x-ri-delete-bin-5-line class="w-6 h-6"/>
                         </div>
@@ -104,8 +103,7 @@
                         <div class="icon3">
                             <h4 class="text-align-vert">Hapus iklan</h4>
                         </div>
-                    </button>
-{{--                    </a>--}}
+                    </a>
 
                     </div>
             </div>
