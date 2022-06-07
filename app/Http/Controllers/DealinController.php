@@ -95,6 +95,8 @@ class DealinController extends Controller
     public function delete(Request $request, $id)
     {
         $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
+        $path = $dealin->file_path;
+        Storage::disk('s3')->delete('images/'.$path);
         if ($dealin) {
             $dealin->delete();
             return redirect()->route('mine')->with('success', 'Iklan berhasil dihapus !');
