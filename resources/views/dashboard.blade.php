@@ -52,7 +52,11 @@
         @elseif(isset($kota))
             <h5>Menampilkan lokasi : {{$kota}}</h5>
         @endif
+
     </div>
+    @if(count($dealin=0))
+        <h5>Iklan tidak ditemukan</h5>
+    @endif
     <div class="grid-container">
         @foreach($dealins as $dealin)
             <div class="grid-item">
