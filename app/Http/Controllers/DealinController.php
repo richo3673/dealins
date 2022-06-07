@@ -41,14 +41,13 @@ class DealinController extends Controller
     public function store(Request $request)
     {
         $dealin = new Dealin;
-
+        if($request->has('foto')) {
         $this->validate($request, [
-            'foto' => 'required',
             'foto.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
         ]);
-
-        $path = $request->file('foto')->store('images', 's3');
-        $dealin->file_path = basename($path);
+            $path = $request->file('foto')->store('images', 's3');
+            $dealin->file_path = basename($path);
+        }
         $dealin->judul = $request->judul;
         $dealin->kategori = $request->kategori;
         $dealin->kondisi = $request->kondisi;
