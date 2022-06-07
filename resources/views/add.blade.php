@@ -32,54 +32,54 @@
                     </div>
                 </div>
 
-                <div class="add-child">
-                    <h3>Foto produk</h3>
-                    <p>Tambahkan foto produk untuk menarik pembeli</p>
+{{--                <div class="add-child">--}}
+{{--                    <h3>Foto produk</h3>--}}
+{{--                    <p>Tambahkan foto produk untuk menarik pembeli</p>--}}
 
-                </div>
-                <div class="add-child">
-                    <div class="input-group">
-                        <div class="preview">
-                            <img id="file-ip-1-preview">
-                        </div>
-                        <label for="file-ip-1">
-                            <x-ri-image-add-fill class="w-12 h-12"/>
-                            <input id="file-ip-1" type="file"  onchange="showPreview(event);" accept="image/png, image/jpg, image/gif, image/jpeg" class="form-control" name="image" required/>
-                        </label>
-                    </div>
-                </div>
+{{--                </div>--}}
+{{--                <div class="add-child">--}}
+{{--                    <div class="input-group">--}}
+{{--                        <div class="preview">--}}
+{{--                            <img id="file-ip-1-preview">--}}
+{{--                        </div>--}}
+{{--                        <label for="file-ip-1">--}}
+{{--                            <x-ri-image-add-fill class="w-12 h-12"/>--}}
+{{--                            <input id="file-ip-1" type="file"  onchange="showPreview(event);" accept="image/png, image/jpg, image/gif, image/jpeg" class="form-control" name="image" required/>--}}
+{{--                        </label>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <div class="add-child">
-                    <h3>Kategori produk</h3>
-                    <p>Pilih kategori</p>
+{{--                <div class="add-child">--}}
+{{--                    <h3>Kategori produk</h3>--}}
+{{--                    <p>Pilih kategori</p>--}}
 
-                </div>
-                <div class="add-child">
-                    <div class="input-group">
-                        <select name="kategori" id="kategori">
-                            <option value="Handphone">Handphone</option>
-                            <option value="Laptop & Komputer">Laptop & Komputer</option>
-                            <option value="Elektronik Lainya">Elektronik Lainya</option>
-                            <option value="Outfit">Outfit</option>
-                            <option value="Sepatu">Sepatu</option>
-                            <option value="Aksesoris">Aksesoris</option>
-                            <option value="Mainan">Mainan</option>
-                            <option value="Otomotif">Otomotif</option>
-                        </select>
-                    </div>
-                </div>
+{{--                </div>--}}
+{{--                <div class="add-child">--}}
+{{--                    <div class="input-group">--}}
+{{--                        <select name="kategori" id="kategori">--}}
+{{--                            <option value="Handphone">Handphone</option>--}}
+{{--                            <option value="Laptop & Komputer">Laptop & Komputer</option>--}}
+{{--                            <option value="Elektronik Lainya">Elektronik Lainya</option>--}}
+{{--                            <option value="Outfit">Outfit</option>--}}
+{{--                            <option value="Sepatu">Sepatu</option>--}}
+{{--                            <option value="Aksesoris">Aksesoris</option>--}}
+{{--                            <option value="Mainan">Mainan</option>--}}
+{{--                            <option value="Otomotif">Otomotif</option>--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <div class="add-child">
-                    <h3>Kondisi produk</h3>
-                </div>
-                <div class="add-child">
-                    <div class="input-group">
-                        <select name="kondisi" id="kondisi">
-                            <option value="Baru">Baru</option>
-                            <option value="Bekas">Bekas</option>
-                        </select>
-                    </div>
-                </div>
+{{--                <div class="add-child">--}}
+{{--                    <h3>Kondisi produk</h3>--}}
+{{--                </div>--}}
+{{--                <div class="add-child">--}}
+{{--                    <div class="input-group">--}}
+{{--                        <select name="kondisi" id="kondisi">--}}
+{{--                            <option value="Baru">Baru</option>--}}
+{{--                            <option value="Bekas">Bekas</option>--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="add-child">
                     <h3>Harga</h3>
@@ -170,9 +170,9 @@
                 method: 'post',
                 data: {
                     judul: jQuery('#judul').val(),
-                    image: jQuery('#file-ip-1').val(),
-                    kategori: jQuery('#kategori').val(),
-                    kondisi: jQuery('#kondisi').val(),
+                    // image: jQuery('#file-ip-1').val(),
+                    // kategori: jQuery('#kategori').val(),
+                    // kondisi: jQuery('#kondisi').val(),
                     harga: jQuery('#harga').val(),
                     desc: jQuery('#desc').val(),
                     kelurahan: jQuery('#kelurahan').val(),
