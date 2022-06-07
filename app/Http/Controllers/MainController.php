@@ -4,16 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Dealin;
 use App\Models\Search;
-use App\Models\User;
-use App\Models\Riwayat;
-use Aws\History;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Storage;
+
 
 class MainController extends Controller
 {
@@ -21,11 +14,13 @@ class MainController extends Controller
     public function home()
     {
         $dealin = Dealin::all()->sortByDesc('id');
-        if (Auth::check()) {
-            $search = Search::where('user_id', Auth::user()->id)->orderBy('dicari', 'DESC')->first();
+
+        //Menampilkan rekomendasi , berdasarkan riwayat pencarian terbanyak pengguna
+        if (Auth::check()) { //Apabila user telah login
+            $search = Search::where('user_id', Auth::user()->id)->orderBy('dicari', 'DESC')->first(); //cek riwayat pencarian terbanyak
             if (isset($search)) {
-                $cari = $search->search;
-                $recommendation = Dealin::where('judul', 'ilike', '%' . $cari . '%')->take(4)->get();
+                $cari = $search->search; //ambil nilai dari kolom search
+                $recommendation = Dealin::where('judul', 'ilike', '%' . $cari . '%')->take(4)->get(); //ambil iklan dari tabel dealin berdasarkan kolom judul ilike $cari
                 if (isset($recommendation)) {
                     return view('dashboard')->with(['dealins' => $dealin])->with(['recommendation' => $recommendation]);
                 } else {
@@ -39,7 +34,7 @@ class MainController extends Controller
         }
     }
 
-    public function byUserId(Request $request)
+    public function byUserId()
     {
         # code...
 
@@ -47,202 +42,23 @@ class MainController extends Controller
         return view('showmine')->with(['dealins' => $dealin]);
     }
 
-    public function show($id)
-    {
-        # code...
-        $dealin = Dealin::find($id);
-        $user = $dealin->user_id;
-        $kontak = User::where('id', $user)->get(['telepon', 'facebook', 'name']);
-        $jumlah_view = Riwayat::where('iklan_id', $id)->get();
-        if (Auth::check()) {
-            $viewer = Auth::user()->id;
-            $cek = Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->first();
-            if ($cek) {
-                $val = $cek->dilihat;
-                Riwayat::where('user_id', $viewer)->where('iklan_id', $id)->update(['updated_at' => Carbon::now(), 'dilihat' => ($val + 1)]);
-            } else {
-                $riwayat = new Riwayat();
-                $riwayat->iklan_id = $id;
-                $riwayat->user_id = $viewer;
-                $riwayat->dilihat = 1;
-                $riwayat->save();
-            }
-            return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak])->with(['jumlah_view' => $jumlah_view]);
-        } else {
-            return view('show')->with(['dealin' => $dealin])->with(['kontak' => $kontak])->with(['jumlah_view' => $jumlah_view]);
-        }
-    }
 
-    public function store(Request $request)
-    {
-        # Validations before updating
-
-        $dealin = new Dealin;
-
-        $this->validate($request, [
-            'foto' => 'required',
-            'foto.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
-        ]);
-
-        $path = $request->file('foto')->store('images', 's3');
-        $dealin->file_path = basename($path);
-        $dealin->judul = $request->judul;
-        $dealin->kategori = $request->kategori;
-        $dealin->kondisi = $request->kondisi;
-        $dealin->harga = $request->harga;
-
-        $dealin->desc = $request->desc;
-        $dealin->kelurahan = $request->kelurahan;
-        $dealin->kecamatan = $request->kecamatan;
-        $dealin->kota = $request->kota;
-        $dealin->provinsi = $request->provinsi;
-        $dealin->user_id = Auth::user()->id;
-
-        if ($dealin->save()) {
-//            return view('show', ['dealin' => $dealin]);
-            return redirect()->route('mine')->with('success', 'Iklan berhasil dipasang!');
-        } else {
-            return redirect()->route('mine')->with('error', 'Ooops, iklan gagal diunggah !');
-        }
-    }
-
-    public function update(Request $request, $id)
-    {
-        # Validations before updating
-        $this->validate($request, [
-            'image.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
-        ]);
-
-        $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
-        $path = $request->file('image')->store('images', 's3');
-        $dealin->file_path = basename($path);
-        $dealin->judul = $request->judul;
-        $dealin->kategori = $request->kategori;
-        $dealin->kondisi = $request->kondisi;
-        $dealin->harga = $request->harga;
-
-        $dealin->desc = $request->desc;
-        $dealin->kelurahan = $request->kelurahan;
-        $dealin->kecamatan = $request->kecamatan;
-        $dealin->kota = $request->kota;
-        $dealin->provinsi = $request->provinsi;
-        if ($dealin->save()) {
-            return redirect()->route('mine')->with('success', 'Iklan berhasil dupdate !');;
-        } else {
-            return redirect()->route('mine')->with('error', 'Ooops, Perbuahan gagal disimpan !');
-        }
-    }
-    public function delete(Request $request, $id)
-    {
-        # code...
-        $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
-        if ($dealin) {
-            $dealin->delete();
-            return redirect()->route('mine')->with('success', 'Iklan berhasil dihapus !');
-        } else {
-            return redirect()->route('mine')->with('error', 'Ooops, iklan gagal dihapus !');
-        }
-        return; // 404
-    }
-
-
-    public function edit(Request $request, $id)
+    public function edit( $id)
     {
         # code...
         $dealin = Dealin::find($id);
         return view('edit', ['dealin' => $dealin]);
     }
 
-    public function create(Request $request)
+    public function create()
     {
         return view('add');
     }
 
-    public function search(Request $request)
-    {
-        $cari = $request->cari;
-        $kota = $request->kota;
-        //Menambahkan ke riwayat pencarian
-        if (Auth::check()) {
-            if (isset($cari)) {
-                $search = Search::where('search', $cari)->where('user_id',Auth::user()->id)->first();
-                if (isset($search)) {
-                    $val = $search->dicari;
-                    Search::where('search', $cari)->where('user_id',Auth::user()->id)->update(['dicari' => ($val + 1)]);
-                } else {
-                    $search = new Search();
-                    $search->user_id = Auth::user()->id;
-                    $search->search = $cari;
-                    $search->save();
-                }
-            }
-        }
-        //Mencari iklan
-        if (isset($cari) && !isset($kota)) {
-            $dealin = Dealin::where('judul', 'ilike', '%' . $cari . '%')->get();
-        } elseif (isset($kota) && !isset($cari)) {
-            $dealin = Dealin::where('kota', 'ilike', '%' . $kota . '%')->orWhere('kecamatan', 'ilike', '%' . $kota . '%')->get();
-        } else {
-            $dealin = Dealin::where('judul', 'ilike', '%' . $cari . '%')->where(function ($query) use ($kota) {
-                $query->where('kota', 'ilike', '%' . $kota . '%')->orWhere('kecamatan', 'ilike', '%' . $kota . '%');
-            })->get();;
-        }
-        if ($dealin) {
-            return view('dashboard', compact('cari', 'kota'))->with(['dealins' => $dealin]);
-        }
-    }
-
-    public function showProfile()
-    {
-        $user = User::find(Auth::user()->id);
-        return view('profile')->with(['user' => $user]);
-    }
-
-    public function updateProfile(Request $request)
-    {
-        $user = User::find(Auth::user()->id);
-        $user->name = $request->nama;
-        $user->telepon = $request->telepon;
-        $date = date("Y-m-d", strtotime($request->tanggal_lahir));
-        $user->tanggal_lahir = $date;
-        $user->facebook = $request->facebook;
-        if ($user->save()) {
-            return redirect()->route('profile')->with('success', 'Profil berhasil dupdate !');
-        } else {
-            return redirect()->route('profile')->with('error', 'Ooops, Perbuahan gagal disimpan !');
-        }
-    }
-
-    public function riwayat()
-    {
-        $dealin = Dealin::join('riwayats', 'riwayats.iklan_id', '=', 'dealins.id')->where('riwayats.user_id', Auth::user()->id)->orderBy('riwayats.updated_at', 'desc')->get();
-        return view('history')->with(['dealins' => $dealin]);
-    }
-
-    public function pengaturan(Request $request)
+    public function pengaturan()
     {
         return view('pengaturan');
     }
 
-    public function hapusRiwayat()
-    {
-        $riwayat = Riwayat::where('user_id', Auth::user()->id)->get();
-        if ($riwayat) {
-            $riwayat->each->delete();
-            return redirect()->route('pengaturan')->with('success', 'Riwayat berhasil dihapus!');
-        } else {
-            return redirect()->route('pengaturan')->with('error', 'Ooops, riwayat tidak ditemukan!');
-        }
-    }
 
-    public function deleteUser(Request $request)
-    {
-        $user = User::find(Auth::user()->id);
-
-        Auth::logout();
-
-        if ($user->delete()) {
-            return redirect()->route('home')->with('success', 'Akun anda berhasil dihapus');
-        }
-    }
 }

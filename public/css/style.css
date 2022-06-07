@@ -331,7 +331,7 @@ h5{
     transform: scale(1.01);
     transition-duration: 0.2s;
 }
-.grid-item .grid-img img{
+.grid-item img {
     align-items: center;
     justify-content: center;
     max-height: 175px;
@@ -339,9 +339,9 @@ h5{
     margin: 0 auto;
     border-radius: 5px;
 }
-/*.grid-item .grid-img {*/
-/*    min-height: 175px;*/
-/*}*/
+.grid-item .grid-img {
+    min-height: 175px;
+}
 .grid-item h1{
     padding-top: 15px;
     font-size: 20px;
@@ -476,7 +476,8 @@ h5{
 
 
 .grid-show-item .img{
-    max-width: 580px;
+    max-width: 600px;
+    max-height: 450px;
     border-radius: 10px;
     display: block;
     margin-left: auto;
