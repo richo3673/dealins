@@ -331,7 +331,7 @@ h5{
     transform: scale(1.01);
     transition-duration: 0.2s;
 }
-.grid-item img {
+.grid-item .grid-img img{
     align-items: center;
     justify-content: center;
     max-height: 175px;
