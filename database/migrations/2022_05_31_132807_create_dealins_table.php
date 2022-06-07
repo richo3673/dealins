@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('kota');
             $table->string('provinsi');
             $table->integer('status')->default(0);
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id')->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

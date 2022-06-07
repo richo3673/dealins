@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('searchs', function (Blueprint $table) {
+        Schema::create('searches', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
-
+            $table->id();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('search');
             $table->integer('dicari')->default(0);

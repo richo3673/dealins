@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('riwayat', function (Blueprint $table) {
+        Schema::create('riwayats', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('iklan_id');
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('iklan_id')->references('id')->on('dealins');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('iklan_id')->references('id')->on('dealins')->onDelete('cascade');
+            $table->integer('dilihat')->default(0);
             $table->timestamps();
         });
 
