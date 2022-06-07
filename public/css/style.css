@@ -275,7 +275,7 @@ h5{
 @media (max-width: 600px) {
     .filter{
         transform: scale(0.8);
-        margin-left: 0px;
+        margin-left: 25px;
     }
 }
 
