@@ -47,7 +47,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="email"  id="judul" value="{{$user->email}}" required>
+                        <input type="email" name="email"  id="judul" value="{{$user->email}}" required>
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="telepon" placeholder="contoh: 081234567890" id="link" value="{{$user->telepon}}">
+                        <input type="number" name="telepon" placeholder="contoh: 081234567890" id="link" value="{{$user->telepon}}">
                     </div>
                 </div>
 

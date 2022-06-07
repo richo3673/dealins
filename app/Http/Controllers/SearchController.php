@@ -11,7 +11,7 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
-        $cari = $request->cari;
+        $cari = strtolower($request->cari);
         $kota = $request->kota;
         //Menambahkan ke riwayat pencarian
         if (Auth::check()) {
