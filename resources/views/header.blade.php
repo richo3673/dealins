@@ -84,8 +84,8 @@
                     <div style="border-bottom: 1px solid #732dd2">
                         <h3>Halo,</h3><h2>{{strtok(Auth::user()->name, " ")}}</h2>
                     </div>
-                    <form method="POST" action="{{ route('mine') }}">
-                        @csrf
+                    <form method="get" action="{{ route('mine') }}">
+{{--                        @csrf--}}
                         <x-dropdown-link :href="route('mine')"
                                          onclick="event.preventDefault();
                                                 this.closest('form').submit();">
