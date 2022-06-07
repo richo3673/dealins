@@ -12,7 +12,7 @@
     width: 100%;
     height: 70px;
     display: grid;
-    grid-template-columns: 13.5% 45% 41.5%;
+    grid-template-columns: 14.5% 46% 41.5%;
 }
 
 @media (min-width : 900px) {
@@ -275,7 +275,7 @@ h5{
 @media (max-width: 600px) {
     .filter{
         transform: scale(0.8);
-        margin-left: 25px;
+        margin-left: 35px;
     }
 }
 
