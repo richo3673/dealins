@@ -55,7 +55,7 @@
 
     </div>
     @if(count($dealins)==0)
-        <h5>Iklan tidak ditemukan</h5>
+        <h4 style="margin-top: 20px">Maaf, Iklan tidak ditemukan</h4>
     @endif
     <div class="grid-container">
         @foreach($dealins as $dealin)
