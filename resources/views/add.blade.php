@@ -1,6 +1,7 @@
 @include('header')
 
 <!-- Page content -->
+
 <div class="main">
 
     <div class="page-header">
@@ -13,7 +14,15 @@
             <h6 class="text-align-vert">Pasang iklan</h6>
         </div>
     </div>
-
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="add-item-container">
         <form method="post" action="{{ route('add') }}"
               enctype="multipart/form-data">
