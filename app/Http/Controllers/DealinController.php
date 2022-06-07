@@ -38,39 +38,10 @@ class DealinController extends Controller
         }
     }
 
-    public function store(Request $request)
-    {
-        $dealin = new Dealin;
-        if($request->has('foto')) {
-        $this->validate($request, [
-            'foto.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
-        ]);
-            $path = $request->file('foto')->store('images', 's3');
-            $dealin->file_path = basename($path);
-        }
-        $dealin->judul = $request->judul;
-        $dealin->kategori = $request->kategori;
-        $dealin->kondisi = $request->kondisi;
-        $dealin->harga = $request->harga;
-
-        $dealin->desc = $request->desc;
-        $dealin->kelurahan = $request->kelurahan;
-        $dealin->kecamatan = $request->kecamatan;
-        $dealin->kota = $request->kota;
-        $dealin->provinsi = $request->provinsi;
-        $dealin->user_id = Auth::user()->id;
-
-        if ($dealin->save()) {
-            return redirect()->route('mine')->with('success', 'Iklan berhasil dipasang!');
-        } else {
-            return redirect()->route('mine')->with('error', 'Ooops, iklan gagal diunggah !');
-        }
-    }
-
     public function update(Request $request, $id)
     {
         $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
-        if($request->has('foto')) {
+        if ($request->has('foto')) {
             $this->validate($request, [
                 'foto.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
             ]);
@@ -93,11 +64,41 @@ class DealinController extends Controller
             return redirect()->route('mine')->with('error', 'Ooops, Perbuahan gagal disimpan !');
         }
     }
+
+    public function store(Request $request)
+    {
+        $dealin = new Dealin;
+        if ($request->has('foto')) {
+            $this->validate($request, [
+                'foto.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
+            ]);
+            $path = $request->file('foto')->store('images', 's3');
+            $dealin->file_path = basename($path);
+        }
+        $dealin->judul = $request->judul;
+        $dealin->kategori = $request->kategori;
+        $dealin->kondisi = $request->kondisi;
+        $dealin->harga = $request->harga;
+
+        $dealin->desc = $request->desc;
+        $dealin->kelurahan = $request->kelurahan;
+        $dealin->kecamatan = $request->kecamatan;
+        $dealin->kota = $request->kota;
+        $dealin->provinsi = $request->provinsi;
+        $dealin->user_id = Auth::user()->id;
+
+        if ($dealin->save()) {
+            return redirect()->route('mine')->with('success', 'Iklan berhasil dipasang!');
+        } else {
+            return redirect()->route('mine')->with('error', 'Ooops, iklan gagal diunggah !');
+        }
+    }
+
     public function delete(Request $request, $id)
     {
         $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
         $path = $dealin->file_path;
-        if($path != 'default.jpg') {
+        if ($path != 'default.jpg') {
             Storage::disk('s3')->delete('images/' . $path);
         }
         if ($dealin) {

@@ -7,6 +7,9 @@ function huFunction() {
 function huFunction2() {
     $(".pop2").toggle();
 }
+function huFunction3() {
+    $(".pop3").toggle();
+}
 window.onclick = function (event) {
     if (!event.target.matches('i')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
