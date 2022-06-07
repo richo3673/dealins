@@ -15,7 +15,9 @@
     </div>
 
     <div class="add-item-container">
-        <form method="post" action="{{ route('add') }}"
+{{--        <form method="post" action="{{ route('add') }}"--}}
+{{--              enctype="multipart/form-data">--}}
+        <form id="addForm"
               enctype="multipart/form-data">
             @csrf
             <div class="add-grid-container">
@@ -54,7 +56,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <select name="kategori" id="kat">
+                        <select name="kategori" id="kategori">
                             <option value="Handphone">Handphone</option>
                             <option value="Laptop & Komputer">Laptop & Komputer</option>
                             <option value="Elektronik Lainya">Elektronik Lainya</option>
@@ -72,7 +74,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <select name="kondisi" id="kat">
+                        <select name="kondisi" id="kondisi">
                             <option value="Baru">Baru</option>
                             <option value="Bekas">Bekas</option>
                         </select>
@@ -84,7 +86,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="number" name="harga" placeholder="Masukkan harga" id="judul" required>
+                        <input type="number" name="harga" placeholder="Masukkan harga" id="harga" required>
                     </div>
                 </div>
 
@@ -105,7 +107,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="kelurahan" placeholder="Masukkan kelurahan" id="judul" required>
+                        <input type="text" name="kelurahan" placeholder="Masukkan kelurahan" id="kelurahan" required>
                     </div>
                 </div>
 
@@ -114,7 +116,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="kecamatan" placeholder="Masukkan kecamatan" id="judul" required>
+                        <input type="text" name="kecamatan" placeholder="Masukkan kecamatan" id="kecamatan" required>
                     </div>
                 </div>
 
@@ -123,7 +125,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="kota" placeholder="Masukkan kota" id="judul" required>
+                        <input type="text" name="kota" placeholder="Masukkan kota" id="kota" required>
                     </div>
                 </div>
 
@@ -132,7 +134,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="provinsi" placeholder="Masukkan provinsi" id="judul" required>
+                        <input type="text" name="provinsi" placeholder="Masukkan provinsi" id="provinsi" required>
                     </div>
                 </div>
 
@@ -140,7 +142,8 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <x-button>IKLANKAN</x-button>
+                        {{--<x-button>IKLANKAN</x-button>--}}
+                        <button class="btnsub" id="ajaxSubmit">Submit</button>
                     </div>
                 </div>
 
@@ -148,5 +151,42 @@
         </form>
     </div>
 </div>
+{{--TEST AJAX--}}
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+</script>
+<script>
+    jQuery(document).ready(function(){
+        jQuery('#ajaxSubmit').click(function(e){
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            jQuery.ajax({
+                url: "{{ route('add') }}",
+                method: 'post',
+                data: {
+                    judul: jQuery('#judul').val(),
+                    image: jQuery('#file-ip-1').val(),
+                    kategori: jQuery('#kategori').val(),
+                    kondisi: jQuery('#kondisi').val(),
+                    harga: jQuery('#harga').val(),
+                    desc: jQuery('#desc').val(),
+                    kelurahan: jQuery('#kelurahan').val(),
+                    kecamatan: jQuery('#kecamatan').val(),
+                    kota: jQuery('#kota').val(),
+                    provinsi: jQuery('#provinsi').val()
+                },
+                success: function(result){
+                    jQuery('.alert').show();
+                    jQuery('.alert').html(result.success);
+                }});
+        });
+    });
+</script>
+
 </body>
 </html>

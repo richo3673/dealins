@@ -22,7 +22,6 @@ Route::get('/login', function () {
 Route::get('/mine', [MainController::class, 'byUserId'])->middleware(['auth'])->name('mine');
 Route::post('/mine', [MainController::class, 'byUserId'])->middleware(['auth'])->name('mine');
 Route::get('/riwayat', [MainController::class, 'riwayat'])->middleware(['auth'])->name('riwayat');
-
 Route::get('/dealins/{id}/edit', [MainController::class, 'edit'])->middleware(['auth'])->name('edit-form');
 Route::get('/create', [MainController::class, 'create'])->middleware(['auth'])->name('create-form');
 Route::post('/dealins/{id}/update', [MainController::class, 'update'])->middleware(['auth'])->name('update');
