@@ -54,7 +54,7 @@
         @endif
 
     </div>
-    @if(count($dealin=0))
+    @if(count($dealins)==0)
         <h5>Iklan tidak ditemukan</h5>
     @endif
     <div class="grid-container">
