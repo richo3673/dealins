@@ -13,16 +13,17 @@
         <div class="icon2">
             <h6 class="text-align-vert">Pasang iklan</h6>
         </div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+
     <div class="add-item-container">
         <form method="post" action="{{ route('add') }}"
               enctype="multipart/form-data">
@@ -51,7 +52,7 @@
                         </div>
                         <label for="file-ip-1">
                             <x-ri-image-add-fill class="w-12 h-12"/>
-                            <input id="file-ip-1" type="file"  onchange="showPreview(event);" accept="image/png, image/jpg, image/gif, image/jpeg" class="form-control" name="image"/>
+                            <input id="file-ip-1" type="file"  onchange="showPreview(event);" accept="image/png, image/jpg, image/gif, image/jpeg" class="form-control" name="foto"/>
                         </label>
                     </div>
                 </div>

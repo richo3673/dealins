@@ -80,11 +80,11 @@ class MainController extends Controller
         $dealin = new Dealin;
 
         $this->validate($request, [
-            'image' => 'required',
-            'image.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
+            'foto' => 'required',
+            'foto.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
         ]);
 
-        $path = $request->file('image')->store('images', 's3');
+        $path = $request->file('foto')->store('images', 's3');
         $dealin->file_path = basename($path);
         $dealin->judul = $request->judul;
         $dealin->kategori = $request->kategori;
@@ -110,7 +110,6 @@ class MainController extends Controller
     {
         # Validations before updating
         $this->validate($request, [
-            'image' => 'required',
             'image.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
         ]);
 
