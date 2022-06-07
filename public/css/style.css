@@ -44,6 +44,7 @@
 @media (min-width : 900px) {
     .navbar-grid .search {
         display: block;
+        transform: scale(0.8);
     }
 }
 .navbar-grid input[type="text"]{
@@ -241,7 +242,7 @@
 /* Style page content */
 .main {
     margin-top: 70px;
-    margin-left: 90px;
+    margin-left: 0px;
     padding: 0px 10px;
 }
 @media (min-width : 800px) {
@@ -290,11 +291,18 @@ h5{
 .grid-container {
     width: 50%;
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: auto auto;
     background-color: #ffffff;
     padding: 15px 0px;
     text-align: left;
     gap:24px;
+}
+@media (max-width: 600px) {
+    .grid-container{
+        transform: scale(0.55);
+        margin-left: -20px;
+        margin-top: -350px;
+    }
 }
 @media (min-width: 600px) {
     .grid-container {
