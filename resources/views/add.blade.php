@@ -15,9 +15,7 @@
     </div>
 
     <div class="add-item-container">
-{{--        <form method="post" action="{{ route('add') }}"--}}
-{{--              enctype="multipart/form-data">--}}
-        <form id="addForm"
+        <form method="post" action="{{ route('add') }}"
               enctype="multipart/form-data">
             @csrf
             <div class="add-grid-container">
@@ -32,61 +30,61 @@
                     </div>
                 </div>
 
-{{--                <div class="add-child">--}}
-{{--                    <h3>Foto produk</h3>--}}
-{{--                    <p>Tambahkan foto produk untuk menarik pembeli</p>--}}
+                <div class="add-child">
+                    <h3>Foto produk</h3>
+                    <p>Tambahkan foto produk untuk menarik pembeli</p>
 
-{{--                </div>--}}
-{{--                <div class="add-child">--}}
-{{--                    <div class="input-group">--}}
-{{--                        <div class="preview">--}}
-{{--                            <img id="file-ip-1-preview">--}}
-{{--                        </div>--}}
-{{--                        <label for="file-ip-1">--}}
-{{--                            <x-ri-image-add-fill class="w-12 h-12"/>--}}
-{{--                            <input id="file-ip-1" type="file"  onchange="showPreview(event);" accept="image/png, image/jpg, image/gif, image/jpeg" class="form-control" name="image" required/>--}}
-{{--                        </label>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                </div>
+                <div class="add-child">
+                    <div class="input-group">
+                        <div class="preview">
+                            <img id="file-ip-1-preview">
+                        </div>
+                        <label for="file-ip-1">
+                            <x-ri-image-add-fill class="w-12 h-12"/>
+                            <input id="file-ip-1" type="file"  onchange="showPreview(event);" accept="image/png, image/jpg, image/gif, image/jpeg" class="form-control" name="image" required/>
+                        </label>
+                    </div>
+                </div>
 
-{{--                <div class="add-child">--}}
-{{--                    <h3>Kategori produk</h3>--}}
-{{--                    <p>Pilih kategori</p>--}}
+                <div class="add-child">
+                    <h3>Kategori produk</h3>
+                    <p>Pilih kategori</p>
 
-{{--                </div>--}}
-{{--                <div class="add-child">--}}
-{{--                    <div class="input-group">--}}
-{{--                        <select name="kategori" id="kategori">--}}
-{{--                            <option value="Handphone">Handphone</option>--}}
-{{--                            <option value="Laptop & Komputer">Laptop & Komputer</option>--}}
-{{--                            <option value="Elektronik Lainya">Elektronik Lainya</option>--}}
-{{--                            <option value="Outfit">Outfit</option>--}}
-{{--                            <option value="Sepatu">Sepatu</option>--}}
-{{--                            <option value="Aksesoris">Aksesoris</option>--}}
-{{--                            <option value="Mainan">Mainan</option>--}}
-{{--                            <option value="Otomotif">Otomotif</option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                </div>
+                <div class="add-child">
+                    <div class="input-group">
+                        <select name="kategori" id="kat">
+                            <option value="Handphone">Handphone</option>
+                            <option value="Laptop & Komputer">Laptop & Komputer</option>
+                            <option value="Elektronik Lainya">Elektronik Lainya</option>
+                            <option value="Outfit">Outfit</option>
+                            <option value="Sepatu">Sepatu</option>
+                            <option value="Aksesoris">Aksesoris</option>
+                            <option value="Mainan">Mainan</option>
+                            <option value="Otomotif">Otomotif</option>
+                        </select>
+                    </div>
+                </div>
 
-{{--                <div class="add-child">--}}
-{{--                    <h3>Kondisi produk</h3>--}}
-{{--                </div>--}}
-{{--                <div class="add-child">--}}
-{{--                    <div class="input-group">--}}
-{{--                        <select name="kondisi" id="kondisi">--}}
-{{--                            <option value="Baru">Baru</option>--}}
-{{--                            <option value="Bekas">Bekas</option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                <div class="add-child">
+                    <h3>Kondisi produk</h3>
+                </div>
+                <div class="add-child">
+                    <div class="input-group">
+                        <select name="kondisi" id="kat">
+                            <option value="Baru">Baru</option>
+                            <option value="Bekas">Bekas</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div class="add-child">
                     <h3>Harga</h3>
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="number" name="harga" placeholder="Masukkan harga" id="harga" required>
+                        <input type="number" name="harga" placeholder="Masukkan harga" id="judul" required>
                     </div>
                 </div>
 
@@ -107,7 +105,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="kelurahan" placeholder="Masukkan kelurahan" id="kelurahan" required>
+                        <input type="text" name="kelurahan" placeholder="Masukkan kelurahan" id="judul" required>
                     </div>
                 </div>
 
@@ -116,7 +114,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="kecamatan" placeholder="Masukkan kecamatan" id="kecamatan" required>
+                        <input type="text" name="kecamatan" placeholder="Masukkan kecamatan" id="judul" required>
                     </div>
                 </div>
 
@@ -125,7 +123,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="kota" placeholder="Masukkan kota" id="kota" required>
+                        <input type="text" name="kota" placeholder="Masukkan kota" id="judul" required>
                     </div>
                 </div>
 
@@ -134,7 +132,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        <input type="text" name="provinsi" placeholder="Masukkan provinsi" id="provinsi" required>
+                        <input type="text" name="provinsi" placeholder="Masukkan provinsi" id="judul" required>
                     </div>
                 </div>
 
@@ -142,8 +140,7 @@
                 </div>
                 <div class="add-child">
                     <div class="input-group">
-                        {{--<x-button>IKLANKAN</x-button>--}}
-                        <button class="btnsub" id="ajaxSubmit">Submit</button>
+                        <x-button>IKLANKAN</x-button>
                     </div>
                 </div>
 
@@ -151,42 +148,6 @@
         </form>
     </div>
 </div>
-{{--TEST AJAX--}}
-<script src="http://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous">
-</script>
-<script>
-    jQuery(document).ready(function(){
-        jQuery('#ajaxSubmit').click(function(e){
-            e.preventDefault();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }
-            });
-            jQuery.ajax({
-                url: "{{  url('/add')}}",
-                method: 'post',
-                data: {
-                    judul: jQuery('#judul').val(),
-                    // image: jQuery('#file-ip-1').val(),
-                    // kategori: jQuery('#kategori').val(),
-                    // kondisi: jQuery('#kondisi').val(),
-                    harga: jQuery('#harga').val(),
-                    desc: jQuery('#desc').val(),
-                    kelurahan: jQuery('#kelurahan').val(),
-                    kecamatan: jQuery('#kecamatan').val(),
-                    kota: jQuery('#kota').val(),
-                    provinsi: jQuery('#provinsi').val()
-                },
-                success: function(result){
-                    jQuery('.alert').show();
-                    jQuery('.alert').html(result.success);
-                }});
-        });
-    });
-</script>
 
 </body>
 </html>
