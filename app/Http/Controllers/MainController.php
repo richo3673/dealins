@@ -82,7 +82,6 @@ class MainController extends Controller
         $this->validate($request, [
             'image' => 'required',
             'image.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
-
         ]);
 
         $path = $request->file('image')->store('images', 's3');

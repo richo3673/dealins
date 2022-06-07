@@ -51,7 +51,7 @@
                         </div>
                         <label for="file-ip-1">
                             <x-ri-image-add-fill class="w-12 h-12"/>
-                            <input id="file-ip-1" type="file"  onchange="showPreview(event);" accept="image/png, image/jpg, image/gif, image/jpeg" class="form-control" name="image" required/>
+                            <input id="file-ip-1" type="file"  onchange="showPreview(event);" accept="image/png, image/jpg, image/gif, image/jpeg" class="form-control" name="image"/>
                         </label>
                     </div>
                 </div>
