@@ -166,7 +166,7 @@
                 }
             });
             jQuery.ajax({
-                url: "{{ route('add') }}",
+                url: "{{  url('/add')}}",
                 method: 'post',
                 data: {
                     judul: jQuery('#judul').val(),
