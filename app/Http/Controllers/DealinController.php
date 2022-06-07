@@ -69,13 +69,14 @@ class DealinController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'image.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
-        ]);
-
         $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
-        $path = $request->file('image')->store('images', 's3');
-        $dealin->file_path = basename($path);
+        if($request->has('foto')) {
+            $this->validate($request, [
+                'foto.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
+            ]);
+            $path = $request->file('foto')->store('images', 's3');
+            $dealin->file_path = basename($path);
+        }
         $dealin->judul = $request->judul;
         $dealin->kategori = $request->kategori;
         $dealin->kondisi = $request->kondisi;
