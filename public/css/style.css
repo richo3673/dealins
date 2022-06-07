@@ -44,7 +44,6 @@
 @media (min-width : 900px) {
     .navbar-grid .search {
         display: block;
-        transform: scale(0.8);
     }
 }
 .navbar-grid input[type="text"]{
@@ -273,7 +272,11 @@ h5{
 .filter{
     margin-left: 70px;
 }
-
+@media (max-width: 600px) {
+    .filter{
+        transform: scale(0.8);
+    }
+}
 
 .filter input[type="text"]{
     border-radius: 10px;
