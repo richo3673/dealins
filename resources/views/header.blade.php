@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<!-- <div id="konfirmasi-hapus-akun" class="pop">
+<div id="konfirmasi-hapus-akun" class="pop">
     <div class="confirmation-box">
         <h1>KONFIRMASI</h1>
         <p>Kami akan menghapus seluruh data anda, termasuk iklan yang anda pasang. Setelah dihapus, akun anda tidak dapat dipulihkan kembali.</p>
@@ -35,7 +35,7 @@
             </form>
         </div>
     </div>
-</div> -->
+</div>
 
 <div id="konfirmasi-hapus-riwayat" class="pop2">
     <div class="confirmation-box">
