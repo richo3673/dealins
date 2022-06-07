@@ -104,7 +104,7 @@
                 </div>
             @else
                 <div id="myDropdown" class="dropdown-content">
-                    <form method="POST" action="/login">
+                    <form method="POST" action="{{ url('login') }}">
                         @csrf
                         <x-dropdown-link :href="route('login')"
                                          onclick="event.preventDefault();
