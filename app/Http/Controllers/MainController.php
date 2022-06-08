@@ -36,8 +36,6 @@ class MainController extends Controller
 
     public function byUserId()
     {
-        # code...
-
         $dealin = Dealin::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
         return view('showmine')->with(['dealins' => $dealin]);
     }

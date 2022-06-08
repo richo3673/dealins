@@ -23,12 +23,12 @@ Route::get('/login', function () {
     return view('welcome');
 });
 
+Route::get('/', [MainController::class, 'home'])->middleware(['auth'])->name('dashboard');
 Route::get('/mine', [MainController::class, 'byUserId'])->middleware(['auth'])->name('mine');
-Route::post('/mine', [MainController::class, 'byUserId'])->middleware(['auth'])->name('mine');
+//Route::post('/mine', [MainController::class, 'byUserId'])->middleware(['auth'])->name('mine');
 Route::get('/pengaturan', [MainController::class, 'pengaturan'])->middleware(['auth'])->name('pengaturan');
 Route::get('/dealins/{id}/edit', [MainController::class, 'edit'])->middleware(['auth'])->name('edit-form');
 Route::get('/create', [MainController::class, 'create'])->middleware(['auth'])->name('create-form');
-Route::get('/', [MainController::class, 'home'])->middleware(['auth'])->name('dashboard');
 Route::get('/', [MainController::class, 'home'])->name('home');
 
 Route::post('/dealins/{id}/update', [DealinController::class, 'update'])->middleware(['auth'])->name('update');
