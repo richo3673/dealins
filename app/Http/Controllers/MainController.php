@@ -49,7 +49,7 @@ class MainController extends Controller
         if($id == Auth::user()->id){
         return view('edit', ['dealin' => $dealin]);}
         else{
-            return redirect()->route('dashboard')->with('Error', 'Akses tidak dapat dilakukan !');
+            return redirect()->route('mine')->with('error', 'Akses tidak dapat dilakukan !');
         }
     }
 
