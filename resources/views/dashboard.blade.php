@@ -27,7 +27,7 @@
     @endif
 
     <h4> Iklan terbaru</h4>
-
+    @include('flash-message')
 
     <div class="filter">
         <form class="group relative" action="{{ route('search') }}">
