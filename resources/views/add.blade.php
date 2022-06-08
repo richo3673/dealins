@@ -14,10 +14,10 @@
             <h6 class="text-align-vert">Pasang iklan</h6>
         </div>
         @if ($errors->any())
-            <div class="alert alert-danger">
+            <div  class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li style="color: red">{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
