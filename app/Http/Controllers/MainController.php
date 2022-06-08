@@ -45,7 +45,12 @@ class MainController extends Controller
     {
         # code...
         $dealin = Dealin::find($id);
-        return view('edit', ['dealin' => $dealin]);
+        $id = $dealin->user_id;
+        if($id == Auth::user()->id()){
+        return view('edit', ['dealin' => $dealin]);}
+        else{
+            return view('home')->with('error', 'Ooops, anda tidak dapat mengakses halaman ini !');
+        }
     }
 
     public function create()
