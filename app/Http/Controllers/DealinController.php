@@ -42,8 +42,8 @@ class DealinController extends Controller
     {
         $dealin = Dealin::where('user_id', Auth::user()->id)->where('id', $id)->first();
         if ($request->has('foto')) {
-            $this->validate($request, [
-                'foto.*' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
+            $request->validate([
+                'foto' => 'image|mimes:jpeg, png, jpg, gif, svg|max:2048'
             ]);
             $path = $request->file('foto')->store('images', 's3');
             $dealin->file_path = basename($path);
